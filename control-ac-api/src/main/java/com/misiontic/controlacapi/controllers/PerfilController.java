@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,13 +39,6 @@ public class PerfilController {
 		perfilService.delete(perfilId);
 		return new WrapperResponse<>(true, "El perfil se ha eliminado correctamente", null).createResponse(HttpStatus.OK);
 	}
-
-	@PutMapping(value = "/perfiles/{perfilId}")
-	public ResponseEntity<WrapperResponse<PerfilDTO>> disable(@PathVariable("perfilId") Long perfilId) {
-		Perfil perfil = perfilService.disable(perfilId);
-		PerfilDTO perfilDTO = converter.fromEntity(perfil);
-		return new WrapperResponse<>(true, "El perfil se ha desactivado correctamente", perfilDTO).createResponse(HttpStatus.OK);
-	}
 	
 	@GetMapping(value = "/perfiles")
 	public ResponseEntity<WrapperResponse<List<PerfilDTO>>> findAll() {
@@ -66,5 +60,12 @@ public class PerfilController {
 		Perfil existePerfil = perfilService.update(converter.fromDTO(perfil));
 		PerfilDTO perfilDTO = converter.fromEntity(existePerfil);
 		return new WrapperResponse<>(true, "El perfil se ha actualizado correctamente", perfilDTO).createResponse(HttpStatus.OK);
+	}
+	
+	@PatchMapping(value = "/perfiles/{perfilId}")
+	public ResponseEntity<WrapperResponse<PerfilDTO>> disable(@PathVariable("perfilId") Long perfilId) {
+		Perfil perfil = perfilService.disable(perfilId);
+		PerfilDTO perfilDTO = converter.fromEntity(perfil);
+		return new WrapperResponse<>(true, "El perfil se ha desactivado correctamente", perfilDTO).createResponse(HttpStatus.OK);
 	}
 }

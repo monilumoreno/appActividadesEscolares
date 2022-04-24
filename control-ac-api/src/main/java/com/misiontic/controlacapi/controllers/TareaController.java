@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -69,7 +70,7 @@ public class TareaController {
 		return new WrapperResponse<>(true, "La tarea se ha eliminado correctamente", null).createResponse(HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "/tareas/{tareaId}")
+	@PatchMapping(value = "/tareas/{tareaId}")
 	private ResponseEntity<WrapperResponse<TareaDTO>> disable(@PathVariable("tareaId") Long tareaId){
 		Tarea tarea = tareaService.disable(tareaId);
 		TareaDTO tareaDTO = converter.fromEntity(tarea);

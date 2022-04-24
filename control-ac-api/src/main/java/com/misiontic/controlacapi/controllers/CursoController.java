@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -60,7 +61,7 @@ public class CursoController {
 		return new WrapperResponse<>(true, "El curso se ha actualizado correctamente", cursoDTO).createResponse(HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "/cursos/{cursoId}")
+	@PatchMapping(value = "/cursos/{cursoId}")
 	public ResponseEntity<WrapperResponse<CursoDTO>> disable(@PathVariable("cursoId") Long cursoId) {
 		Curso curso = cursoService.disable(cursoId);
 		CursoDTO cursoDTO = converter.fromEntity(curso);
