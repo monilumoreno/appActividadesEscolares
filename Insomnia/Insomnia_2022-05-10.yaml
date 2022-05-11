@@ -1,36 +1,26 @@
 _type: export
 __export_format: 4
-__export_date: 2022-04-24T22:19:50.660Z
-__export_source: insomnia.desktop.app:v2022.2.1
+__export_date: 2022-05-11T03:13:07.047Z
+__export_source: insomnia.desktop.app:v2022.3.0
 resources:
-  - _id: req_ccc09aa87ac3484797d5e9adc8bde8eb
+  - _id: req_e7886804839042b8ac02e51eaae11245
     parentId: fld_d03f4dd73da442198e819b7cc018d7fd
-    modified: 1650595853536
-    created: 1648601355124
-    url: http://localhost:8080/alumnos-tareas
-    name: grade
+    modified: 1652237413537
+    created: 1651546702020
+    url: http://localhost:8080/lista-por-alumno/5
+    name: findByIdAlumno
     description: ""
-    method: PATCH
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"idRelTareaAlumno": 6,
-        	"calificacion": 5.0,
-        	"observaciones": "Excelente trabajo"	
-        }
+    method: GET
+    body: {}
     parameters: []
     headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_1dbbafff131c495b94eb5603120d4a25
-      - id: pair_03ce213487e841268f4f3a797cbed3f9
+      - id: pair_29c1294120e94b7fb42ea0e241ad7163
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA1OTQ3NjUsImV4cCI6MTY1MDU5ODM2NX0.q2JVZjWlSnArRqpHzSJrB8RIhFLA9WkIjWd7uFrWr6cFgCKsZdPQqIGiZxXBHdgm7pPJUjmO7f6cAQ77SmIzMw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
-    metaSortKey: -1648601355125
+    metaSortKey: -1651546702020
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -57,11 +47,99 @@ resources:
     description: ""
     scope: collection
     _type: workspace
+  - _id: req_cf1d197e4b40406b9d0041c6c6a96d19
+    parentId: fld_d03f4dd73da442198e819b7cc018d7fd
+    modified: 1652237386463
+    created: 1651543598851
+    url: http://localhost:8080/alumnos-tareas/2
+    name: disable
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_577e1fa257d24d639a998ec136e89d72
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+    authentication: {}
+    metaSortKey: -1651543598851
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fbb14043b1a4487ca7cec1b4c829029f
+    parentId: fld_d03f4dd73da442198e819b7cc018d7fd
+    modified: 1652237342721
+    created: 1651541325794
+    url: http://localhost:8080/alumnos-tareas-activos
+    name: findActives
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_98569e131f1a4cd383eb6dfe636654da
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+    authentication: {}
+    metaSortKey: -1651541325794
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ccc09aa87ac3484797d5e9adc8bde8eb
+    parentId: fld_d03f4dd73da442198e819b7cc018d7fd
+    modified: 1652237520394
+    created: 1648601355124
+    url: http://localhost:8080/alumnos-tareas
+    name: grade
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"idRelTareaAlumno": 1,
+        	"calificacion": 5.0,
+        	"observaciones": "Excelente trabajo"	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_1dbbafff131c495b94eb5603120d4a25
+      - id: pair_03ce213487e841268f4f3a797cbed3f9
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+    authentication: {}
+    metaSortKey: -1648601355125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_f742c59f710d4335aeb65df21aef0ce8
     parentId: fld_d03f4dd73da442198e819b7cc018d7fd
-    modified: 1650595290796
+    modified: 1652237239444
     created: 1648591970525
-    url: http://localhost:8080/alumnos-tareas-lista/16
+    url: http://localhost:8080/alumnos-tareas-lista/1
     name: findByIdTarea
     description: ""
     method: GET
@@ -71,7 +149,7 @@ resources:
       - id: pair_3f44b8a1d363467c9e8f8e35db7453d8
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA1OTQ3NjUsImV4cCI6MTY1MDU5ODM2NX0.q2JVZjWlSnArRqpHzSJrB8RIhFLA9WkIjWd7uFrWr6cFgCKsZdPQqIGiZxXBHdgm7pPJUjmO7f6cAQ77SmIzMw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1648591970525
@@ -85,9 +163,9 @@ resources:
     _type: request
   - _id: req_12d858c48e33411bb7894aba1b6cbe47
     parentId: fld_d03f4dd73da442198e819b7cc018d7fd
-    modified: 1650595844533
+    modified: 1652237224560
     created: 1648522609172
-    url: http://localhost:8080/alumnos-tareas/16
+    url: http://localhost:8080/alumnos-tareas/1
     name: findById
     description: ""
     method: GET
@@ -97,7 +175,7 @@ resources:
       - id: pair_590119b3873e44daa510182786d46121
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA1OTQ3NjUsImV4cCI6MTY1MDU5ODM2NX0.q2JVZjWlSnArRqpHzSJrB8RIhFLA9WkIjWd7uFrWr6cFgCKsZdPQqIGiZxXBHdgm7pPJUjmO7f6cAQ77SmIzMw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1648522609172
@@ -109,24 +187,24 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_1cff50ce973a430186da01e9c78f1817
+  - _id: req_efdb1c17e56f4b7f8e8660e1b97f0987
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650760165769
-    created: 1649111143727
-    url: http://localhost:8080/alumnos-acudiente/5
-    name: findByIdAcudiente
+    modified: 1652236363314
+    created: 1651541237193
+    url: http://localhost:8080/alumnos-activos
+    name: findActives
     description: ""
     method: GET
     body: {}
     parameters: []
     headers:
-      - id: pair_27cb48d845fd4ef6bf851bb57784ba3b
+      - id: pair_fd1cca979c45419a893a55d17509d69a
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
-    metaSortKey: -1649111143728
+    metaSortKey: -1651541237193
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -145,11 +223,37 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1648264675203
     _type: request_group
+  - _id: req_1cff50ce973a430186da01e9c78f1817
+    parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
+    modified: 1652236381204
+    created: 1649111143727
+    url: http://localhost:8080/alumnos-acudiente/5
+    name: findByIdAcudiente
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_27cb48d845fd4ef6bf851bb57784ba3b
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+    authentication: {}
+    metaSortKey: -1649111143728
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_88f17f2e545e4f749fa9a6b339a2dec0
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650760062536
+    modified: 1652236454946
     created: 1648345472200
-    url: http://localhost:8080/alumnos/8
+    url: http://localhost:8080/alumnos/9
     name: disable
     description: ""
     method: PATCH
@@ -159,7 +263,7 @@ resources:
       - id: pair_625185ab08d1484abd435c01dd7c1be8
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1648345472200
@@ -173,7 +277,7 @@ resources:
     _type: request
   - _id: req_11b31c9553e74163b3b7f22e2a47128f
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650760096428
+    modified: 1651024994167
     created: 1648345241004
     url: http://localhost:8080/alumnos/8
     name: delete
@@ -185,7 +289,7 @@ resources:
       - id: pair_c799478e3d7e4cf6aa400a9955990e07
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTEwMjMzNDUsImV4cCI6MTY1MTAyNjk0NX0.EXe5MLtWP-FrdpZiqv1aiytekMeu8qL9IavaHYIPXJDRBeuSJYpuysUQonDT7ewbVjIxnHe9Z3R28aY7uwgqqw
         description: ""
     authentication: {}
     metaSortKey: -1648345241004
@@ -199,7 +303,7 @@ resources:
     _type: request
   - _id: req_3d439524846b4408b6cb2b86b16c2edf
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650760004357
+    modified: 1652237583564
     created: 1648270576632
     url: http://localhost:8080/alumnos/
     name: update
@@ -209,7 +313,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"idAlumno": 8,
+        	"idAlumno": 9,
         	"tipoDocumento": "1",
         	"numeroDocumento": "8888888888111",
         	"nombres": "Alumno 8 nombres UPDATE",
@@ -221,7 +325,7 @@ resources:
         		"idUsuario": 6
         	},
         	"idCurso": {
-        		"idCurso": 1
+        		"idCurso": 3
         	}	
         }
     parameters: []
@@ -232,7 +336,7 @@ resources:
       - id: pair_34e54193c1104a85b2d69035c299dd2f
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1648270576632
@@ -246,7 +350,7 @@ resources:
     _type: request
   - _id: req_afd10b8217d141a9b539d472c7bdbddb
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650759990148
+    modified: 1652237590762
     created: 1648268850570
     url: http://localhost:8080/alumnos
     name: create
@@ -256,8 +360,8 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"tipoDocumento": "2",
-        	"numeroDocumento": "8888888888",
+        	"tipoDocumento": "0",
+        	"numeroDocumento": "999999999",
         	"nombres": "Alumno 8 nombres",
         	"apellidos": "Alumno 8 apellidos",
         	"telefono": "3118888888",
@@ -267,7 +371,7 @@ resources:
         		"idUsuario": 5
         	},
         	"idCurso": {
-        		"idCurso": 5
+        		"idCurso": 1
         	}	
         }
     parameters: []
@@ -278,7 +382,7 @@ resources:
       - id: pair_5d1fbf2f980548d8aad9fecfed3c9dbe
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
       - id: pair_9f2ba3f7f07c4bb1af1d6df88110ca3d
         name: ""
@@ -296,7 +400,7 @@ resources:
     _type: request
   - _id: req_0c9da7b14a634da98c013328de4b7712
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650759620909
+    modified: 1652236517404
     created: 1648267430236
     url: http://localhost:8080/alumnos-curso/1
     name: findByIdCurso
@@ -308,7 +412,7 @@ resources:
       - id: pair_204eef8ea53c46d9a88669662e8c76e0
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1648267430236
@@ -322,7 +426,7 @@ resources:
     _type: request
   - _id: req_fedf293f536d42deb75e576994ea8af7
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650759214750
+    modified: 1652236562327
     created: 1648266575985
     url: http://localhost:8080/alumnos
     name: findAll
@@ -334,7 +438,7 @@ resources:
       - id: pair_a18211bc54c040ab9410a3741d1ae3b5
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1648266575985
@@ -348,9 +452,9 @@ resources:
     _type: request
   - _id: req_5e408a4007b8486c9d311c8cc1e970f3
     parentId: fld_4fafe3f68ef34144b4b743fd0a46e85e
-    modified: 1650759689688
+    modified: 1652237659505
     created: 1648265002466
-    url: http://localhost:8080/alumnos/8
+    url: http://localhost:8080/alumnos/9
     name: findById
     description: ""
     method: GET
@@ -360,7 +464,12 @@ resources:
       - id: pair_5191be82f698446f89a501fff369df8e
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+        disabled: false
+      - id: pair_4acd9cc71645445db7984b502a27237c
+        name: ""
+        value: ""
         description: ""
     authentication: {}
     metaSortKey: -1648265002467
@@ -372,38 +481,24 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_afc356330a8440c485d3aec3bd6d3e19
+  - _id: req_1c96227304a049888559b920a907548e
     parentId: fld_1f9b14a9e94643cca82b315f719a6079
-    modified: 1650752260694
-    created: 1649390321415
-    url: http://localhost:8080/tareas-request
-    name: find
+    modified: 1652237041756
+    created: 1651541139241
+    url: http://localhost:8080/tareas-activas
+    name: findActives
     description: ""
     method: GET
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"idCurso": 2,
-        	"idAsignatura": 3,
-        	"idDocente": 2
-        }
+    body: {}
     parameters: []
     headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_81ed5e2adfa942378d63205eb504495d
-      - id: pair_8557336572b44abc9c7a3357e7abc7ab
+      - id: pair_e1c99447f2f84b38833da8996dd78ee8
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA1OTQ3NjUsImV4cCI6MTY1MDU5ODM2NX0.q2JVZjWlSnArRqpHzSJrB8RIhFLA9WkIjWd7uFrWr6cFgCKsZdPQqIGiZxXBHdgm7pPJUjmO7f6cAQ77SmIzMw
-        description: ""
-      - id: pair_a393baba7d6947c8be64ad7f89b52acf
-        name: ""
-        value: ""
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
-    metaSortKey: -1649390321415
+    metaSortKey: -1651541139241
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -422,11 +517,51 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1637849039626
     _type: request_group
+  - _id: req_afc356330a8440c485d3aec3bd6d3e19
+    parentId: fld_1f9b14a9e94643cca82b315f719a6079
+    modified: 1652237701783
+    created: 1649390321415
+    url: http://localhost:8080/tareas-request
+    name: find
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"idCurso": 2,
+        	"idAsignatura": 2,
+        	"idDocente": 2
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_81ed5e2adfa942378d63205eb504495d
+      - id: pair_8557336572b44abc9c7a3357e7abc7ab
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+      - id: pair_a393baba7d6947c8be64ad7f89b52acf
+        name: ""
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1649390321415
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_9530a92902e74b73917695546c4fd4ed
     parentId: fld_1f9b14a9e94643cca82b315f719a6079
-    modified: 1650754869838
+    modified: 1652236996475
     created: 1648263961765
-    url: http://localhost:8080/tareas/14
+    url: http://localhost:8080/tareas/3
     name: disable
     description: ""
     method: PATCH
@@ -436,7 +571,7 @@ resources:
       - id: pair_0bec5b4186944bc2982b22b354b0c2cb
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NDgyNjI5MDQsImV4cCI6MTY0ODI2NjUwNH0.-_vBn3V04VvaQ4wvpWTUdyrLIa1e-1E9UbDR9CkP9vseboHIsZHivQK_bqQyzY75AglFFTacqNuFwmuAhaVUdA
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1648263961765
@@ -450,7 +585,7 @@ resources:
     _type: request
   - _id: req_6883ac6ecefa4e7f849ba62bae575070
     parentId: fld_1f9b14a9e94643cca82b315f719a6079
-    modified: 1648264156759
+    modified: 1652237706941
     created: 1637850624986
     url: http://localhost:8080/tareas
     name: update
@@ -460,7 +595,7 @@ resources:
       mimeType: application/json
       text: |-
         	{
-        		"idTarea": 14,
+        		"idTarea": 2,
             "descripcionTarea": "Nueva descripción",
             "fechaEntrega": "2022-12-31"
           }
@@ -472,7 +607,7 @@ resources:
       - id: pair_93794ce1a3754db18c5c2f55ec3a6960
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NDgyNjI5MDQsImV4cCI6MTY0ODI2NjUwNH0.-_vBn3V04VvaQ4wvpWTUdyrLIa1e-1E9UbDR9CkP9vseboHIsZHivQK_bqQyzY75AglFFTacqNuFwmuAhaVUdA
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
       - id: pair_4c4c790531294854bab1a7e2458810cd
         name: ""
@@ -490,7 +625,7 @@ resources:
     _type: request
   - _id: req_a3eb7334a9c74fb9996ece159b96b452
     parentId: fld_1f9b14a9e94643cca82b315f719a6079
-    modified: 1650595164279
+    modified: 1652237710932
     created: 1637850038590
     url: http://localhost:8080/tareas
     name: create
@@ -500,8 +635,8 @@ resources:
       mimeType: application/json
       text: |-
         {
-            "descripcionTarea": "GUÍA No. 12",
-        		"fechaEntrega": "2022-04-29",
+            "descripcionTarea": "Taller No. 1",
+        		"fechaEntrega": "2022-05-29",
         		"idDocente": {
               "idUsuario": 2
               },
@@ -509,7 +644,7 @@ resources:
         			"idCurso": 2
         		},
         		"idAsignatura": {
-        			"idAsignatura": 3
+        			"idAsignatura": 2
         		}
         }
     parameters: []
@@ -520,7 +655,7 @@ resources:
       - id: pair_2c135ab9d10946eb8857286a970fac98
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA1OTQ3NjUsImV4cCI6MTY1MDU5ODM2NX0.q2JVZjWlSnArRqpHzSJrB8RIhFLA9WkIjWd7uFrWr6cFgCKsZdPQqIGiZxXBHdgm7pPJUjmO7f6cAQ77SmIzMw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637850038590
@@ -560,7 +695,7 @@ resources:
     _type: request
   - _id: req_7b34ce13cfa5472a8af69e7174597d09
     parentId: fld_1f9b14a9e94643cca82b315f719a6079
-    modified: 1648077995159
+    modified: 1652236921427
     created: 1637849395262
     url: http://localhost:8080/tareas
     name: findAll
@@ -572,7 +707,7 @@ resources:
       - id: pair_b8fb85f4cf024b8d9be1bdd2c2dac9e7
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NDgwNzY3NDQsImV4cCI6MTY0ODA4MDM0NH0.z6Zrd0rluAJiwHA66ajdsFhjWRTJOqMR4thh8rn4oSC6kteZbStd3iHu_MK_7Y-wSe3CPjw5b4nSSTSyMpAiOg
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
       - id: pair_c74485569c51400282d5aa4013558879
         name: ""
@@ -659,9 +794,9 @@ resources:
     _type: request
   - _id: req_db6cbb7158a146649725a2712bfe2f1e
     parentId: fld_1f9b14a9e94643cca82b315f719a6079
-    modified: 1650760425467
+    modified: 1652236846686
     created: 1637849069470
-    url: http://localhost:8080/tareas/15
+    url: http://localhost:8080/tareas/1
     name: findById
     description: ""
     method: GET
@@ -671,7 +806,7 @@ resources:
       - id: pair_0f2069e7092a4585a68f8515e91d5fc9
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
       - id: pair_47c3f31979d94a9d840f1692fed3aeca
         name: ""
@@ -693,24 +828,24 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_349bd06b4bb8453980ede7d4df2f8b32
+  - _id: req_cf9e6831f1944d11a238fb6e417221ea
     parentId: fld_9bd69529c74a4336a3d9723654bd8a15
-    modified: 1650758043781
-    created: 1648164017049
-    url: http://localhost:8080/usuarios/8
-    name: disable
+    modified: 1652235828892
+    created: 1651534504065
+    url: http://localhost:8080/usuarios-activos
+    name: findActives
     description: ""
-    method: PATCH
+    method: GET
     body: {}
     parameters: []
     headers:
-      - id: pair_502f21fad98e4b2fb17dcaf0820e9075
+      - id: pair_000cfcfbb6714cc3abed1b618fa4bc00
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
-    metaSortKey: -1648164017049
+    metaSortKey: -1651534504065
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -729,9 +864,35 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1637818917359
     _type: request_group
+  - _id: req_349bd06b4bb8453980ede7d4df2f8b32
+    parentId: fld_9bd69529c74a4336a3d9723654bd8a15
+    modified: 1652235811811
+    created: 1648164017049
+    url: http://localhost:8080/usuarios/10
+    name: disable
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_502f21fad98e4b2fb17dcaf0820e9075
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+    authentication: {}
+    metaSortKey: -1648164017049
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_440189ba67fb4810a711e5f21bd273ba
     parentId: fld_9bd69529c74a4336a3d9723654bd8a15
-    modified: 1650758031067
+    modified: 1652237753283
     created: 1638999070862
     url: http://localhost:8080/usuarios
     name: create
@@ -742,16 +903,16 @@ resources:
       text: |-2
          {
               "tipoDocumento": "1",
-        	 		"numeroDocumento": "7000",      
-              "nombres": "Acudiente 4",
-              "apellidos": "Acudiente 4",
-              "telefono": "3904444444",
-              "direccion": "Calle 444",
-        	 		"correo": "acudiete4@gmail.com",
-              "usuario": "acu4",
-              "clave": "1234",
+        	 		"numeroDocumento": "10000",      
+              "nombres": "Docente 10000",
+              "apellidos": "Docente 10000",
+              "telefono": "39010000",
+              "direccion": "Calle 10000",
+        	 		"correo": "docente10000@gmail.com",
+              "usuario": "doc10000",
+              "clave": "10000",
               "idPerfil": {
-                "idPerfil": 3
+                "idPerfil": 2
               }
         }
     parameters: []
@@ -762,7 +923,7 @@ resources:
       - id: pair_01ee11d293c84b798579bc765e4647d1
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1638999070862
@@ -776,7 +937,7 @@ resources:
     _type: request
   - _id: req_721a23a9439d4d52b119b349f3a127d7
     parentId: fld_9bd69529c74a4336a3d9723654bd8a15
-    modified: 1650757597646
+    modified: 1652238616847
     created: 1638857857133
     url: http://localhost:8080/login
     name: login
@@ -810,7 +971,7 @@ resources:
     _type: request
   - _id: req_6d919dda22704804b53b0e6443a7308b
     parentId: fld_9bd69529c74a4336a3d9723654bd8a15
-    modified: 1650757982627
+    modified: 1652237761120
     created: 1637847561879
     url: http://localhost:8080/usuarios
     name: update
@@ -820,18 +981,18 @@ resources:
       mimeType: application/json
       text: |-2
             {
-        	    "idUsuario": 8,			
+        	    "idUsuario": 10,			
               "tipoDocumento": "2",
         	 		"numeroDocumento": "2222222222",      
-              "nombres": "Acudiente 6 UPDATE",
-              "apellidos": "Acudiente 6 UPDATE",
-              "telefono": "3UPDATE",
+              "nombres": "Acudiente 10 UPDATE",
+              "apellidos": "Acudiente 10 UPDATE",
+              "telefono": "311222UPDATE",
               "direccion": "Calle 123 UPDATE",
-        	 		"correo": "acudiete6@gmail.com UPDATE",
+        	 		"correo": "acudiete10@gmail.com UPDATE",
               "usuario": "alu3 UPDATE",
               "clave": "123 UPDATE",
               "idPerfil": {
-                "idPerfil": 1
+                "idPerfil": 3
               }
         }
     parameters: []
@@ -842,7 +1003,7 @@ resources:
       - id: pair_a142f45ef805457d8594d4498e7536cb
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637847561879
@@ -856,9 +1017,9 @@ resources:
     _type: request
   - _id: req_9a3cc8962edc4077875cda15c22b5777
     parentId: fld_9bd69529c74a4336a3d9723654bd8a15
-    modified: 1650758086615
+    modified: 1652235868357
     created: 1637841716802
-    url: http://localhost:8080/usuarios/8
+    url: http://localhost:8080/usuarios/10
     name: delete
     description: ""
     method: DELETE
@@ -868,7 +1029,7 @@ resources:
       - id: pair_7ab27e26f3f449678c01ff44867adaf7
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637841716803
@@ -882,9 +1043,9 @@ resources:
     _type: request
   - _id: req_c5df20fc56a2497e9ed4e83b44329656
     parentId: fld_9bd69529c74a4336a3d9723654bd8a15
-    modified: 1650757870009
+    modified: 1652235599614
     created: 1637832053917
-    url: http://localhost:8080/usuarios/8
+    url: http://localhost:8080/usuarios/10
     name: findById
     description: ""
     method: GET
@@ -894,7 +1055,7 @@ resources:
       - id: pair_e0c3d82282204547aaf839f72f0f5dac
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637832053917
@@ -908,7 +1069,7 @@ resources:
     _type: request
   - _id: req_5f51f0a19e6d40e582fad96cdebfa81e
     parentId: fld_9bd69529c74a4336a3d9723654bd8a15
-    modified: 1650757639358
+    modified: 1652235614571
     created: 1637819592694
     url: http://localhost:8080/usuarios
     name: findAll
@@ -920,7 +1081,7 @@ resources:
       - id: pair_577c3647ed57435ca7e84a9ce1c6a1b4
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
       - id: pair_720cbbe606f0437a91248230470e0c9e
         name: ""
@@ -940,29 +1101,24 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_3f2994b0599844008201ed1ff28be4e7
+  - _id: req_e3b44aa698c448fd8968703404cec327
     parentId: fld_ab315f840d4e4ec5864e7e62002e24bb
-    modified: 1650759050018
-    created: 1648162075356
-    url: http://localhost:8080/cursos/7
-    name: disable
+    modified: 1652235417830
+    created: 1651534406959
+    url: http://localhost:8080/cursos-activos
+    name: findActives
     description: ""
-    method: PATCH
+    method: GET
     body: {}
     parameters: []
     headers:
-      - id: pair_a6e08d944afb4d079aa09f3026f96a97
+      - id: pair_3d208a8669e64924811ec8662ddf1e1d
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
-      - id: pair_ca7afb5020c245efa881068e7d1f4fce
-        name: ""
-        value: ""
-        description: ""
-        disabled: true
     authentication: {}
-    metaSortKey: -1648162075356
+    metaSortKey: -1651534406959
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -981,11 +1137,42 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1637771498644
     _type: request_group
+  - _id: req_3f2994b0599844008201ed1ff28be4e7
+    parentId: fld_ab315f840d4e4ec5864e7e62002e24bb
+    modified: 1652235390911
+    created: 1648162075356
+    url: http://localhost:8080/cursos/8
+    name: disable
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_a6e08d944afb4d079aa09f3026f96a97
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+      - id: pair_ca7afb5020c245efa881068e7d1f4fce
+        name: ""
+        value: ""
+        description: ""
+        disabled: true
+    authentication: {}
+    metaSortKey: -1648162075356
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_5cd10cc8fd424c249fc02ccccb7c4f1c
     parentId: fld_ab315f840d4e4ec5864e7e62002e24bb
-    modified: 1650759098256
+    modified: 1652235457036
     created: 1637772081061
-    url: http://localhost:8080/cursos/7
+    url: http://localhost:8080/cursos/8
     name: delete
     description: ""
     method: DELETE
@@ -995,7 +1182,7 @@ resources:
       - id: pair_2d36194607d64545962ff769450a4bd8
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637772081061
@@ -1009,7 +1196,7 @@ resources:
     _type: request
   - _id: req_f1a976f5cfcb460a9015b3f7a9f00bb6
     parentId: fld_ab315f840d4e4ec5864e7e62002e24bb
-    modified: 1650759007122
+    modified: 1652237800338
     created: 1637771958869
     url: http://localhost:8080/cursos
     name: update
@@ -1019,8 +1206,8 @@ resources:
       mimeType: application/json
       text: |-
         {
-            "idCurso": 7	,
-        	  "descripcionCurso": "Curso 14-Z UPDATE"
+            "idCurso": 8	,
+        	  "descripcionCurso": "Curso 11-3 UPDATE"
          }
     parameters: []
     headers:
@@ -1030,7 +1217,7 @@ resources:
       - id: pair_24c02416cc2a4fe19c958f0e8e3f69e9
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637771958869
@@ -1044,7 +1231,7 @@ resources:
     _type: request
   - _id: req_1bd544a15e3a471c8a24909ae69ae059
     parentId: fld_ab315f840d4e4ec5864e7e62002e24bb
-    modified: 1650758958209
+    modified: 1652237804325
     created: 1637771654135
     url: http://localhost:8080/cursos
     name: create
@@ -1054,7 +1241,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-          "descripcionCurso": "GRADO 10-3"	
+          "descripcionCurso": "GRADO 11-3"	
         }
     parameters: []
     headers:
@@ -1064,7 +1251,7 @@ resources:
       - id: pair_295922526f3d45f0a3f083b92aca5de9
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637771654135
@@ -1078,7 +1265,7 @@ resources:
     _type: request
   - _id: req_efb439e1a2ca409b8598c8dddb25df79
     parentId: fld_ab315f840d4e4ec5864e7e62002e24bb
-    modified: 1650758892813
+    modified: 1652235275692
     created: 1637771592830
     url: http://localhost:8080/cursos
     name: findAll
@@ -1090,7 +1277,7 @@ resources:
       - id: pair_b8bd90d396a14855827bfdd3b78867a1
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637771592830
@@ -1104,9 +1291,9 @@ resources:
     _type: request
   - _id: req_8c38e2c6f17044df9ff3b8fc0067f232
     parentId: fld_ab315f840d4e4ec5864e7e62002e24bb
-    modified: 1650759069527
+    modified: 1652235327558
     created: 1637771523947
-    url: http://localhost:8080/cursos/7
+    url: http://localhost:8080/cursos/8
     name: findById
     description: ""
     method: GET
@@ -1116,7 +1303,7 @@ resources:
       - id: pair_e3f746c115da432da263bfe01df896fc
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637771523948
@@ -1128,24 +1315,24 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_dde27248228e4949b9288c826bb92786
+  - _id: req_61dea592ba1549afae423cbaa87a320a
     parentId: fld_f4e17397cee14f2c9d550cc977d81ca6
-    modified: 1650758685312
-    created: 1648157172464
-    url: http://localhost:8080/asignaturas/10
-    name: disable
+    modified: 1652235228434
+    created: 1651526892653
+    url: http://localhost:8080/asignaturas-activas
+    name: findActives
     description: ""
-    method: PATCH
+    method: GET
     body: {}
     parameters: []
     headers:
-      - id: pair_7bbe8ea8adcf4ff7a1ca0c132f0beb1c
+      - id: pair_c499f0ba6ebc456fba16ebc48e4f4892
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
-    metaSortKey: -1648157172464
+    metaSortKey: -1651526892653
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -1164,11 +1351,37 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1637729044996
     _type: request_group
+  - _id: req_dde27248228e4949b9288c826bb92786
+    parentId: fld_f4e17397cee14f2c9d550cc977d81ca6
+    modified: 1652235213110
+    created: 1648157172464
+    url: http://localhost:8080/asignaturas/12
+    name: disable
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_7bbe8ea8adcf4ff7a1ca0c132f0beb1c
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+    authentication: {}
+    metaSortKey: -1648157172464
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_bc799497393544bf804c3020aa6c7da1
     parentId: fld_f4e17397cee14f2c9d550cc977d81ca6
-    modified: 1650758731242
+    modified: 1652235117607
     created: 1637739248375
-    url: http://localhost:8080/asignaturas/10
+    url: http://localhost:8080/asignaturas/11
     name: delete
     description: ""
     method: DELETE
@@ -1178,7 +1391,7 @@ resources:
       - id: pair_3c67e5de97834729bd6afbf061619726
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637739248375
@@ -1192,7 +1405,7 @@ resources:
     _type: request
   - _id: req_9692c5c06aca40df89c8ff1436286ed0
     parentId: fld_f4e17397cee14f2c9d550cc977d81ca6
-    modified: 1650758641318
+    modified: 1652237833446
     created: 1637739117125
     url: http://localhost:8080/asignaturas
     name: update
@@ -1202,8 +1415,8 @@ resources:
       mimeType: application/json
       text: |-
         {
-            "idAsignatura": 10,
-            "descripcionAsignatura": "Musica"
+            "idAsignatura": 12,
+            "descripcionAsignatura": "Danzas"
         }
     parameters: []
     headers:
@@ -1213,7 +1426,7 @@ resources:
       - id: pair_4639b212c7554adf9475f4e3fd28e928
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637739117125
@@ -1227,7 +1440,7 @@ resources:
     _type: request
   - _id: req_88a89d16c36f4ff794c7bf4b9003d012
     parentId: fld_f4e17397cee14f2c9d550cc977d81ca6
-    modified: 1650758609391
+    modified: 1652237838115
     created: 1637737641946
     url: http://localhost:8080/asignaturas
     name: create
@@ -1237,7 +1450,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-          "descripcionAsignatura": "Salud"	
+          "descripcionAsignatura": "Deportes"	
         }
     parameters: []
     headers:
@@ -1247,7 +1460,7 @@ resources:
       - id: pair_ff43e3961b8d4500bb04f0d3f639a911
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637737641946
@@ -1261,7 +1474,7 @@ resources:
     _type: request
   - _id: req_0c4d10954c264fe089b93eef31b9c866
     parentId: fld_f4e17397cee14f2c9d550cc977d81ca6
-    modified: 1650758541487
+    modified: 1652235085271
     created: 1637737524223
     url: http://localhost:8080/asignaturas
     name: findAll
@@ -1273,7 +1486,7 @@ resources:
       - id: pair_a71d25b8d83e454bb8263ddfa9b2112c
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637737524224
@@ -1287,9 +1500,9 @@ resources:
     _type: request
   - _id: req_834f20fdd4014079bd8e2af9a7fde690
     parentId: fld_f4e17397cee14f2c9d550cc977d81ca6
-    modified: 1650758654644
+    modified: 1652235153923
     created: 1637729074384
-    url: http://localhost:8080/asignaturas/10
+    url: http://localhost:8080/asignaturas/12
     name: findById
     description: ""
     method: GET
@@ -1299,7 +1512,7 @@ resources:
       - id: pair_95ae377700834e73b1e6b081a7394faa
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637729074384
@@ -1311,24 +1524,24 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_c423db6979b1446881a732f67d6995f8
+  - _id: req_52d3cb612c0745ef86e715bfb9bdc477
     parentId: fld_bf3a9b1a51614cfa831953b124eef878
-    modified: 1650758375400
-    created: 1648155759987
-    url: http://localhost:8080/perfiles/4
-    name: disable
+    modified: 1652234974699
+    created: 1651534038361
+    url: http://localhost:8080/perfiles-activos
+    name: findActives
     description: ""
-    method: PATCH
+    method: GET
     body: {}
     parameters: []
     headers:
-      - id: pair_24100e27cbe64f9fb1acb238190e925e
+      - id: pair_36b7d3eecdda4d5ca3b65b3116df76de
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
-    metaSortKey: -1648155759987
+    metaSortKey: -1651534038361
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -1347,11 +1560,37 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1637719258353
     _type: request_group
+  - _id: req_c423db6979b1446881a732f67d6995f8
+    parentId: fld_bf3a9b1a51614cfa831953b124eef878
+    modified: 1652234959364
+    created: 1648155759987
+    url: http://localhost:8080/perfiles/5
+    name: disable
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_24100e27cbe64f9fb1acb238190e925e
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
+        description: ""
+    authentication: {}
+    metaSortKey: -1648155759987
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_705d65fabcdc48b2a8cb3e9fc305c927
     parentId: fld_bf3a9b1a51614cfa831953b124eef878
-    modified: 1650758494241
+    modified: 1652235058450
     created: 1637720143418
-    url: http://localhost:8080/perfiles/4
+    url: http://localhost:8080/perfiles/6
     name: delete
     description: ""
     method: DELETE
@@ -1361,7 +1600,7 @@ resources:
       - id: pair_2384370f406b4f2b8177ad71b5c93f5a
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637720143418
@@ -1375,7 +1614,7 @@ resources:
     _type: request
   - _id: req_a942f9eae0504a7cb39784f6cd8cd2c0
     parentId: fld_bf3a9b1a51614cfa831953b124eef878
-    modified: 1650758320711
+    modified: 1652237871676
     created: 1637719899783
     url: http://localhost:8080/perfiles
     name: update
@@ -1385,7 +1624,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-            "idPerfil": 4,
+            "idPerfil": 5,
             "descripcionPerfil": "Servicios"  
         }
     parameters: []
@@ -1396,7 +1635,7 @@ resources:
       - id: pair_773b9a663fd743919eb9ff1212167d8b
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637719899783
@@ -1410,7 +1649,7 @@ resources:
     _type: request
   - _id: req_ff79648a81034fe1ae215108d61f890a
     parentId: fld_bf3a9b1a51614cfa831953b124eef878
-    modified: 1650758239876
+    modified: 1652237875780
     created: 1637719660918
     url: http://localhost:8080/perfiles
     name: create
@@ -1430,7 +1669,7 @@ resources:
       - id: pair_16988f42523346f2942fa9b4f0a07583
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
       - id: pair_7e0d5a0dac71447b952d465d13141e34
         name: ""
@@ -1448,7 +1687,7 @@ resources:
     _type: request
   - _id: req_f3621267989d42b68aa982e5a916de8f
     parentId: fld_bf3a9b1a51614cfa831953b124eef878
-    modified: 1650758197453
+    modified: 1652234862989
     created: 1637719538031
     url: http://localhost:8080/perfiles
     name: findAll
@@ -1460,7 +1699,7 @@ resources:
       - id: pair_2c0815aaf7094598986454358ffc5ede
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
       - id: pair_0a94770933b44f1496f60a572e5c0b9a
         name: ""
@@ -1478,9 +1717,9 @@ resources:
     _type: request
   - _id: req_6a1606ad70a54712bc2a08dee3db3252
     parentId: fld_bf3a9b1a51614cfa831953b124eef878
-    modified: 1650758261523
+    modified: 1652234843414
     created: 1637719310285
-    url: http://localhost:8080/perfiles/4
+    url: http://localhost:8080/perfiles/1
     name: findById
     description: ""
     method: GET
@@ -1490,7 +1729,7 @@ resources:
       - id: pair_407e9f64d0f54f09adb4575012e329e5
         name: Authorization
         value: Bearer
-          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTA3NTc1OTksImV4cCI6MTY1MDc2MTE5OX0.m_6-BTPvgIxI4sZazQPSIrQ2LPWupUtwSuikf606_l1OJRV0yfSOsc9BtB4HZIKo4oATqRO5xwz1yTUEg-8Ftw
+          eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2NTIyMzQ3NjMsImV4cCI6MTY1MjIzODM2M30.BMnViPd-nz6QrK9PdaDJN3VIJ6jng46cqKMt3mMdfubCZteaqY_MqflpMZUR0ikmj-4Cx0I_wENHDQQ7L0ke8g
         description: ""
     authentication: {}
     metaSortKey: -1637719310285

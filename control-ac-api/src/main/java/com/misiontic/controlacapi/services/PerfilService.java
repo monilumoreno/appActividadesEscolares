@@ -60,6 +60,20 @@ public class PerfilService {
 		}
 	}
 
+	public List<Perfil> findActives() {
+        try {
+            List<Perfil> listaPerfiles = perfilRepo.findActives()
+                    .orElseThrow(() -> new NoDataFoundException("Perfiles no registrados"));
+            return listaPerfiles;
+        } catch (ValidateServiceException | NoDataFoundException e) {
+            log.info(e.getMessage(), e);
+            throw e;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new GeneralServiceException(e.getMessage(), e);
+        }
+    }
+	
 	public Perfil create(Perfil perfil) {
 		try {
 			perfil.setEstado('A');

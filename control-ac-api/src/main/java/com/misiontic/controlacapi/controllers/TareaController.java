@@ -18,6 +18,7 @@ import com.misiontic.controlacapi.converters.RelTareaAlumnoConverter;
 import com.misiontic.controlacapi.converters.TareaConverter;
 import com.misiontic.controlacapi.dtos.RelTareaAlumnoDTO;
 import com.misiontic.controlacapi.dtos.TareaDTO;
+import com.misiontic.controlacapi.dtos.TareaRequestDTO;
 import com.misiontic.controlacapi.entities.RelTareaAlumno;
 import com.misiontic.controlacapi.entities.Tarea;
 import com.misiontic.controlacapi.services.RelTareaAlumnoService;
@@ -35,6 +36,12 @@ public class TareaController {
 	private TareaConverter converter = new TareaConverter();
 	private RelTareaAlumnoConverter relConverter = new RelTareaAlumnoConverter();
 	
+	/**
+	 * Encuentra los datos generales de una tarea por ID
+	 * Parámetros: ID de la tarea
+	 * Retorna: Datos generales de la tarea: ID, descripción, fecha creación, estado, ID curso,
+	 * 			ID docente, ID asignatura. 
+	 */			
 	@GetMapping(value = "/tareas/{tareaId}")
 	public ResponseEntity<WrapperResponse<TareaDTO>> findById(@PathVariable("tareaId") Long tareaId) {
 		Tarea tarea = tareaService.findById(tareaId);
@@ -42,6 +49,11 @@ public class TareaController {
 		return new WrapperResponse<>(true, "Tarea encontrada", tareaDTO).createResponse(HttpStatus.OK);
 	}	
 
+	/**
+	 * Encuentra los datos generales de todas las tareas registradas
+	 * Parámetros: Ninguno
+	 * Retorna: Datos generales de las tareas
+	 */			
 	@GetMapping(value = "/tareas")
 	public ResponseEntity<WrapperResponse<List<TareaDTO>>> findAll() {
 		List<Tarea> arregloTareas = tareaService.findAll();
@@ -49,6 +61,35 @@ public class TareaController {
 		return new WrapperResponse<>(true, "Tareas encontradas", tareasDTO).createResponse(HttpStatus.OK);
 	}
 
+	/**
+	 * Recupera las tareas con propiedad estado = 'A'
+	 * Parámetros: 
+	 * Retorna: Listado de tareas
+	 */	
+	@GetMapping(value = "/tareas-activas")
+    public ResponseEntity<WrapperResponse<List<TareaDTO>>> findActives() {
+        List<Tarea> listaTareas = tareaService.findActives();
+        List<TareaDTO> tareasDTO = converter.fromEntity(listaTareas);
+        return new WrapperResponse<>(true, "Tareas registradas", tareasDTO).createResponse(HttpStatus.OK);
+    }
+	
+	/**
+	 * Recupera una tarea por ID curso, ID asignatura, ID docente
+	 * Parámetros: ID curso, ID asignatura, ID docente
+	 * Retorna: Listado de tareas
+	 */	
+	@GetMapping(value = "/tareas-request")
+	public ResponseEntity<WrapperResponse<List<TareaDTO>>> find(@RequestBody TareaRequestDTO request) {
+		List<Tarea> listaTareas = tareaService.find(request);
+		List<TareaDTO> listaTareasDTO = converter.fromEntity(listaTareas);
+		return new WrapperResponse<>(true, "Tareas registradas", listaTareasDTO).createResponse(HttpStatus.OK);		
+	}
+	
+	/**
+	 * Crea una nueva tarea
+	 * Parámetros: Objeto TareaDTO
+	 * Retorna: Listado con los datos específicos de la tarea por cada alumno
+	 */	
 	@PostMapping(value = "/tareas")
 	public ResponseEntity<WrapperResponse<List<RelTareaAlumnoDTO>>> create(@RequestBody TareaDTO tarea) {
 		Tarea nuevaTarea = tareaService.create(converter.fromDTO(tarea));		
@@ -57,6 +98,11 @@ public class TareaController {
 		return new WrapperResponse<>(true, "La tarea se ha creado correctamente", listaRelDTO).createResponse(HttpStatus.CREATED);
 	}
 	
+	/**
+	 * Actualiza una tarea
+	 * Parámetros: Objeto TareaDTO
+	 * Retorna: Datos de la tarea creada
+	 */	
 	@PutMapping(value = "/tareas")
 	public ResponseEntity<WrapperResponse<TareaDTO>> update(@RequestBody TareaDTO tarea) {
 		Tarea existeTarea = tareaService.update(converter.fromDTO(tarea));
@@ -64,12 +110,22 @@ public class TareaController {
 		return new WrapperResponse<>(true, "La tarea se ha actualizado correctamente", tareaDTO).createResponse(HttpStatus.OK);
 	}
 	
+	/**
+	 * Elimina una tarea
+	 * Parámetros: ID de la tarea
+	 * Retorna: 
+	 */	
 	@DeleteMapping(value = "/tareas/{tareaId}")
 	public ResponseEntity<?> delete(@PathVariable("tareaId") Long tareaId) {
 		tareaService.delete(tareaId);
 		return new WrapperResponse<>(true, "La tarea se ha eliminado correctamente", null).createResponse(HttpStatus.OK);
 	}
 	
+	/**
+	 * Actualiza el valor del atributo estado a 'I'
+	 * Parámetros: ID de la tarea
+	 * Retorna: Datos de la tarea
+	 */	
 	@PatchMapping(value = "/tareas/{tareaId}")
 	private ResponseEntity<WrapperResponse<TareaDTO>> disable(@PathVariable("tareaId") Long tareaId){
 		Tarea tarea = tareaService.disable(tareaId);

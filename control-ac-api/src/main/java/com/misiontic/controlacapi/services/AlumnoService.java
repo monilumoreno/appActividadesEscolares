@@ -85,6 +85,20 @@ public class AlumnoService {
 		}
 	}
 	
+	public List<Alumno> findActives() {
+        try {
+            List<Alumno> listaAlumnos = alumnoRepo.findActives()
+                    .orElseThrow(() -> new NoDataFoundException("Alumnos no registrados"));
+            return listaAlumnos;
+        } catch (ValidateServiceException | NoDataFoundException e) {
+            log.info(e.getMessage(), e);
+            throw e;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new GeneralServiceException(e.getMessage(), e);
+        }
+    }
+	
 	public Alumno create(Alumno alumno) {
 		try {
 			alumno.setEstado('A');

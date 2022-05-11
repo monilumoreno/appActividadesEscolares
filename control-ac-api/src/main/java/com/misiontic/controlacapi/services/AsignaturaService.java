@@ -75,6 +75,20 @@ public class AsignaturaService {
 		}
 	}
 
+	public List<Asignatura> findActives() {
+        try {
+            List<Asignatura> listaAsignaturas = asignaturaRepo.findActives()
+            		.orElseThrow(() -> new NoDataFoundException("Asignaturas no registradas"));
+            return listaAsignaturas;
+        } catch (ValidateServiceException | NoDataFoundException e) {
+            log.info(e.getMessage(), e);
+            throw e;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new GeneralServiceException(e.getMessage(), e);
+        }
+    }
+	
 	public Asignatura update(Asignatura asignatura) {
 		try {
 			asignatura.setEstado('A');

@@ -24,14 +24,36 @@ public class RelTareaAlumnoController {
 	@Autowired
 	private RelTareaAlumnoService relTareaAlumnoService;
 	private RelTareaAlumnoConverter converter = new RelTareaAlumnoConverter();
-	
-	@GetMapping(value = "/alumnos-tareas/{tareasalumnosId}")
-	public ResponseEntity<WrapperResponse<RelTareaAlumnoDTO>> findById(@PathVariable("tareasalumnosId") Long tareasalumnosId) {
-		RelTareaAlumno relTareaAlumno = relTareaAlumnoService.findById(tareasalumnosId);
+
+	/**
+	 * Crea un nuevo registro con los datos particulares de una tarea
+	 * Parámetros: Descripción, calificación, observaciones, fechaCalificación, ID alumno, ID tarea.
+	 * Retorna: Datos particulares de la tarea
+	 */		
+	@PostMapping(value = "/alumnos-tareas")
+	public ResponseEntity<WrapperResponse<RelTareaAlumnoDTO>> create(@RequestBody RelTareaAlumnoDTO relTareaAlumno) {
+		RelTareaAlumno nuevaRelTareaAlumno = relTareaAlumnoService.create(converter.fromDTO(relTareaAlumno));
+		RelTareaAlumnoDTO relTareaAlumnoDTO = converter.fromEntity(nuevaRelTareaAlumno);
+		return new WrapperResponse<>(true, "La tarea se ha creado correctamente", relTareaAlumnoDTO).createResponse(HttpStatus.CREATED);
+	}
+
+	/**
+	 * Encuentra los datos particulares de una tarea de un alumno
+	 * Parámetros: ID de la relación tareas-alumnos
+	 * Retorna: Datos particulares de las tareas
+	 */		
+	@GetMapping(value = "/alumnos-tareas/{tareaAlumnoId}")
+	public ResponseEntity<WrapperResponse<RelTareaAlumnoDTO>> findById(@PathVariable("tareaAlumnoId") Long tareaAlumnoId) {
+		RelTareaAlumno relTareaAlumno = relTareaAlumnoService.findById(tareaAlumnoId);
 		RelTareaAlumnoDTO relTareaAlumnoDTO = converter.fromEntity(relTareaAlumno);
 		return new WrapperResponse<>(true, "Tarea encontrada", relTareaAlumnoDTO).createResponse(HttpStatus.OK);
 	}
 	
+	/**
+	 * Recupera los detos particulares de las tareas
+	 * Parámetros: Ninguno
+	 * Retorna: Listado con los detos particulares de las tareas
+	 */	
 	@GetMapping(value = "/alumnos-tareas")
 	public ResponseEntity<WrapperResponse<List<RelTareaAlumnoDTO>>> findAll() {
 		List<RelTareaAlumno> listaRelTareaAlumno = relTareaAlumnoService.findAll();
@@ -39,6 +61,11 @@ public class RelTareaAlumnoController {
 		return new WrapperResponse<>(true, "Tarea encontrada", listaRelTareaAlumnoDTO).createResponse(HttpStatus.OK);
 	}
 	
+	/**
+	 * Recupera los detos particulares de las tareas
+	 * Parámetros: ID de la tarea
+	 * Retorna: Listado con los detos particulares de las tareas
+	 */	
 	@GetMapping(value = "/alumnos-tareas-lista/{tareaId}")
 	public ResponseEntity<WrapperResponse<List<RelTareaAlumnoDTO>>> findByIdTarea(@PathVariable("tareaId") Long tareaId) {
 		List<RelTareaAlumno> listaRelTareaAlumo = relTareaAlumnoService.findByIdTarea(tareaId);
@@ -46,17 +73,51 @@ public class RelTareaAlumnoController {
 		return new WrapperResponse<>(true, "Tareas registradas", listaRelTareaAlumnoDTO).createResponse(HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/alumnos-tareas")
-	public ResponseEntity<WrapperResponse<RelTareaAlumnoDTO>> create(@RequestBody RelTareaAlumnoDTO relTareaAlumno) {
-		RelTareaAlumno nuevaRelTareaAlumno = relTareaAlumnoService.create(converter.fromDTO(relTareaAlumno));
-		RelTareaAlumnoDTO relTareaAlumnoDTO = converter.fromEntity(nuevaRelTareaAlumno);
-		return new WrapperResponse<>(true, "La tarea se ha creado correctamente", relTareaAlumnoDTO).createResponse(HttpStatus.CREATED);
+	/**
+	 * Recupera los detos particulares de las tareas de un alumno
+	 * Parámetros: ID del alumno
+	 * Retorna: Listado con los detos particulares de las tareas de un alumno
+	 */		
+	@GetMapping(value = "/lista-por-alumno/{alumnoId}")
+	public ResponseEntity<WrapperResponse<List<RelTareaAlumnoDTO>>> findByIdAlumno(@PathVariable("alumnoId") Long alumnoId) {
+		List<RelTareaAlumno> listaRelTareaAlumo = relTareaAlumnoService.findByIdAlumno(alumnoId);
+		List<RelTareaAlumnoDTO> listaRelTareaAlumnoDTO = converter.fromEntity(listaRelTareaAlumo);
+		return new WrapperResponse<>(true, "Tareas registradas", listaRelTareaAlumnoDTO).createResponse(HttpStatus.OK);
 	}
 	
+	/**
+	 * Recupera los datos particulares de las tareas con propiedad estado = 'A'
+	 * Parámetros: 
+	 * Retorna: Listado con los datos particulares de las tareas con propiedad estado = 'A'
+	 */	
+	@GetMapping(value = "/alumnos-tareas-activos")
+    public ResponseEntity<WrapperResponse<List<RelTareaAlumnoDTO>>> findActives() {
+        List<RelTareaAlumno> listaTareasAlumnos = relTareaAlumnoService.findActives();
+        List<RelTareaAlumnoDTO> tareasAlumnosDTO = converter.fromEntity(listaTareasAlumnos);
+        return new WrapperResponse<>(true, "Tareas registradas", tareasAlumnosDTO).createResponse(HttpStatus.OK);
+    }	
+	
+	/**
+	 * Actualiza el valor de la propiedad calificacion de la tarea
+	 * Parámetros: ID RelTareaAlumno, calificacion, observaciones
+	 * Retorna: Datos particulares de la tarea
+	 */	
 	@PatchMapping(value = "/alumnos-tareas")
 	public ResponseEntity<WrapperResponse<RelTareaAlumnoDTO>> grade(@RequestBody TareaGradeRequestDTO tareaGrade) {
 	    RelTareaAlumno relTareaAlumno = relTareaAlumnoService.grade(tareaGrade);
 	    RelTareaAlumnoDTO relTareaAlumnoDTO = converter.fromEntity(relTareaAlumno);
 	    return new WrapperResponse<>(true, "La tarea se ha calificado correctamente", relTareaAlumnoDTO).createResponse(HttpStatus.OK);
+	}
+	
+	/**
+	 * Actualiza el valor de la propiedad estado a 'I'
+	 * Parámetros: ID
+	 * Retorna: Datos particulares de la tarea
+	 */	
+	@PatchMapping(value = "/alumnos-tareas/{tareaAlumnoId}")
+	private ResponseEntity<WrapperResponse<RelTareaAlumnoDTO>> disable(@PathVariable("tareaAlumnoId") Long tareaAlumnoId){
+		RelTareaAlumno tareaAlumno = relTareaAlumnoService.disable(tareaAlumnoId);
+		RelTareaAlumnoDTO tareaAlumnoDTO = converter.fromEntity(tareaAlumno);
+		return new WrapperResponse<>(true, "La tarea se ha inactivado correctamente", tareaAlumnoDTO).createResponse(HttpStatus.OK);
 	}
 }

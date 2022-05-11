@@ -47,8 +47,24 @@ public class RelTareaAlumnoService {
 	    
 	    try {
 	        Tarea tarea = tareaRepo.getById(idTarea);
-	        List<RelTareaAlumno> listaRelTareaAlumno = relTareaAlumnoRepo.findByidTarea(tarea)
+	        List<RelTareaAlumno> listaRelTareaAlumno = relTareaAlumnoRepo.findByIdTarea(tarea)
 	        .orElseThrow(() -> new NoDataFoundException("Tarea no registrada"));
+	        return listaRelTareaAlumno;
+	    } catch (ValidateServiceException | NoDataFoundException e) {
+			log.info(e.getMessage(), e);
+			throw e;
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			throw new GeneralServiceException(e.getMessage(), e);
+		}	    
+	}
+	
+	public List<RelTareaAlumno> findByIdAlumno(Long idAlumno) {
+	    
+	    try {
+	        Alumno alumno = alumnoRepo.getById(idAlumno);
+	        List<RelTareaAlumno> listaRelTareaAlumno = relTareaAlumnoRepo.findByIdAlumno(alumno)
+	        .orElseThrow(() -> new NoDataFoundException("Tareas no registradas"));
 	        return listaRelTareaAlumno;
 	    } catch (ValidateServiceException | NoDataFoundException e) {
 			log.info(e.getMessage(), e);
@@ -71,6 +87,20 @@ public class RelTareaAlumnoService {
 			throw new GeneralServiceException(e.getMessage(), e);
 		}
 	}
+
+	public List<RelTareaAlumno> findActives() {
+        try {
+            List<RelTareaAlumno> listaTareasAlumnos = relTareaAlumnoRepo.findActives()
+                    .orElseThrow(() -> new NoDataFoundException("Tareas no registradas"));
+            return listaTareasAlumnos;
+        } catch (ValidateServiceException | NoDataFoundException e) {
+            log.info(e.getMessage(), e);
+            throw e;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new GeneralServiceException(e.getMessage(), e);
+        }
+    }
 	
 	public RelTareaAlumno create(RelTareaAlumno relTareaAlumno) {
 		try {

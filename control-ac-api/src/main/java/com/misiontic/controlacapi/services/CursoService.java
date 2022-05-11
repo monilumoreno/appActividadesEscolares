@@ -60,6 +60,20 @@ public class CursoService {
 		}
 	}
 
+	public List<Curso> findActives() {
+        try {
+            List<Curso> listaCursos = cursoRepo.findActives()
+                    .orElseThrow(() -> new NoDataFoundException("Cursos no registrados"));
+            return listaCursos;
+        } catch (ValidateServiceException | NoDataFoundException e) {
+            log.info(e.getMessage(), e);
+            throw e;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new GeneralServiceException(e.getMessage(), e);
+        }
+    }
+	
 	public Curso create(Curso curso) {
 		try {
 			curso.setEstado('A');

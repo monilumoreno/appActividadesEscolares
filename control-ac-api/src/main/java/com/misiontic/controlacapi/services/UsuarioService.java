@@ -78,6 +78,20 @@ public class UsuarioService {
 		}
 	}
 
+	public List<Usuario> findActives() {
+        try {
+            List<Usuario> listaUsuarios = usuarioRepo.findActives()
+                    .orElseThrow(() -> new NoDataFoundException("Usuarios no registrados"));
+            return listaUsuarios;
+        } catch (ValidateServiceException | NoDataFoundException e) {
+            log.info(e.getMessage(), e);
+            throw e;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            throw new GeneralServiceException(e.getMessage(), e);
+        }
+    }
+	
 	public Usuario create(Usuario usuario) {
 		try {
 			usuario.setEstado('A');
