@@ -30,8 +30,10 @@ const CrearTarea = () => {
     const cargarCursos = async () => {
 
         const response = await APIInvoke.invokeGET(`/cursos`);
-        setCursos(response.body);
-        console.log(response);
+
+        setTimeout(() => {
+            setCursos(response.body);
+        }, 10000);
     }
     
     //Define un estado para consumir el servicio
@@ -40,7 +42,11 @@ const CrearTarea = () => {
     //Método para consumir el servicio
     const cargarAsignaturas = async () => {
         const response = await APIInvoke.invokeGET(`/asignaturas`);
-        setAsignaturas(response.body);
+
+        setTimeout(() => {
+            setAsignaturas(response.body);
+        }, 10000);
+        
     }
 
     useEffect(() => {

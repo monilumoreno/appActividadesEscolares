@@ -22,12 +22,12 @@ VALUES (3, 1, '1060600600', 'Acudiente 2', 'Acudiente 2', '3106006060', 'Carrera
 INSERT INTO usuarios (idperfil, tipodocumento, numerodocumento, nombres, apellidos, telefono, direccion, correo, usuario, clave)
 VALUES (3, 1, '1070700700', 'Acudiente 3', 'Acudiente 3', '3107007070', 'Calle 5 32-71', 'acudiente3@correo.com', 'acudiente3', '678');
 
-INSERT INTO cursos (descripcioncurso) VALUES ('6-01');
-INSERT INTO cursos (descripcioncurso) VALUES ('7-01');
-INSERT INTO cursos (descripcioncurso) VALUES ('8-01');
-INSERT INTO cursos (descripcioncurso) VALUES ('9-01');
-INSERT INTO cursos (descripcioncurso) VALUES ('10-01');
-INSERT INTO cursos (descripcioncurso) VALUES ('11-01');
+INSERT INTO cursos (descripcioncurso) VALUES ('6-1');
+INSERT INTO cursos (descripcioncurso) VALUES ('7-1');
+INSERT INTO cursos (descripcioncurso) VALUES ('8-1');
+INSERT INTO cursos (descripcioncurso) VALUES ('9-1');
+INSERT INTO cursos (descripcioncurso) VALUES ('10-1');
+INSERT INTO cursos (descripcioncurso) VALUES ('11-1');
 
 INSERT INTO asignaturas (descripcionasignatura) VALUES ('Matemáticas');
 INSERT INTO asignaturas (descripcionasignatura) VALUES ('Física');
@@ -48,7 +48,7 @@ VALUES (7, 1, 0, '1300300300', 'Alumno 3', 'Alumno 3', '3003003030', 'Calle 25 8
 INSERT INTO alumnos (idacudiente, idcurso, tipodocumento, numerodocumento, nombres, apellidos, telefono, direccion, correo)
 VALUES (5, 2, 0, '1400400400', 'Alumno 4', 'Alumno 4', '3204004040', 'Carrera 82 9-36', 'alumno4@correo.com');
 INSERT INTO alumnos (idacudiente, idcurso, tipodocumento, numerodocumento, nombres, apellidos, telefono, direccion, correo)
-VALUES (6, 2, 0, '1500500500', 'Alumno 6', 'Alumno 5', '3145005050', 'Avenida 37 38-32', 'alumno5correo.com');
+VALUES (6, 2, 0, '1500500500', 'Alumno 5', 'Alumno 5', '3145005050', 'Avenida 37 38-32', 'alumno5correo.com');
 INSERT INTO alumnos (idacudiente, idcurso, tipodocumento, numerodocumento, nombres, apellidos, telefono, direccion, correo)
 VALUES (7, 2, 0, '1500500500', 'Alumno 6', 'Alumno 6', '3006006060', 'Calle 93 6-29', 'alumno6@correo.com');
 INSERT INTO alumnos (idacudiente, idcurso, tipodocumento, numerodocumento, nombres, apellidos, telefono, direccion, correo)
