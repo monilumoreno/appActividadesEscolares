@@ -20,7 +20,7 @@
 
 create table perfiles
 (
-   idperfil             bigint not null auto_increment,
+   idperfil             int not null,
    descripcionperfil    varchar(20) not null,
    estado               char(1) not null default 'A'  comment 'A  Activo
                                                                I  Inactivo',
@@ -34,13 +34,12 @@ create table perfiles
 
 create table usuarios
 (
-   idusuario            bigint not null auto_increment,
-   idperfil             bigint not null,
-   tipodocumento        char(1) not null  comment '0  Tarjeta de identidad
-                                               1  Cédula de ciudadanía
-                                               2  Cédula de extranjería
-                                               3  Pasaporte
-                                               4  PEP',
+   idusuario            int not null auto_increment,
+   idperfil             int not null,
+   tipodocumento        char(1) not null  comment '2  Cédula de ciudadanía
+                                               3  Cédula de extranjería
+                                               4  Pasaporte
+                                               5  PEP',
    numerodocumento      varchar(20) not null,
    nombres              varchar(50) not null,
    apellidos            varchar(50) not null,
@@ -48,7 +47,7 @@ create table usuarios
    direccion            varchar(100) not null,
    correo               varchar(100) not null,
    usuario              varchar(100) not null,
-   clave                varchar(100) not null,
+   clave                varchar(500) not null,
    estado               char(1) not null default 'A'  comment 'A  Activo
                                                                I  Inactivo',
    primary key (idusuario)
@@ -61,7 +60,7 @@ create table usuarios
 
 create table cursos
 (
-   idcurso              bigint not null auto_increment,
+   idcurso              int not null auto_increment,
    descripcioncurso     varchar(20) not null,
    estado               char(1) not null default 'A'  comment 'A  Activo
                                                                I  Inactivo',
@@ -75,7 +74,7 @@ create table cursos
 
 create table asignaturas
 (
-   idasignatura         bigint not null auto_increment,
+   idasignatura         int not null auto_increment,
    descripcionasignatura varchar(100) not null,
    estado               char(1) not null default 'A'  comment 'A  Activo
                                                                I  Inactivo',
@@ -89,10 +88,10 @@ create table asignaturas
 
 create table alumnos
 (
-   idalumno             bigint not null auto_increment,
-   idacudiente          bigint not null,
-   idcurso              bigint not null,
-   tipodocumento        int not null  comment '0  Tarjeta de identidad
+   idalumno             int not null auto_increment,
+   idacudiente          int not null,
+   idcurso              int not null,
+   tipodocumento        char(1) null  comment '0  Tarjeta de identidad
                                                1  Cédula de ciudadanía
                                                2  Cédula de extranjería
                                                3  Pasaporte
@@ -115,10 +114,10 @@ create table alumnos
 
 create table tareas
 (
-   idtarea              bigint not null auto_increment,
-   idcurso              bigint not null,
-   idasignatura         bigint not null,
-   iddocente            bigint not null,
+   idtarea              int not null auto_increment,
+   idcurso              int not null,
+   idasignatura         int not null,
+   iddocente            int not null,
    descripciontarea     text not null,
    fechacreacion        date not null default (current_date),
    fechaentrega         date not null,
@@ -133,9 +132,9 @@ create table tareas
 
 create table reltareasalumnos
 (
-   idreltareasalumnos   bigint not null auto_increment,
-   idalumno             bigint not null,
-   idtarea              bigint not null,
+   idreltareasalumnos   int not null auto_increment,
+   idalumno             int not null,
+   idtarea              int not null,
    descripcion          varchar(10) not null default 'Pendiente'  comment 'Entregada
                                                                            Pendiente
                                                                            Calificada',
