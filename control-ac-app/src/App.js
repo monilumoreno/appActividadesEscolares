@@ -10,6 +10,7 @@ import UsuariosAdmin from './pages/control-ac/UsuariosAdmin';
 import UsuariosCrear from './pages/control-ac/UsuariosCrear';
 import UsuariosEditar from './pages/control-ac/UsuariosEditar';
 import PerfilEditar from './pages/control-ac/PerfilEditar';
+import AlumnosAdmin from './pages/control-ac/AlumnosAdmin';
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path = "/crear-actividad" exact element = {<CrearTarea />} />
           <Route path = "/buscar-tarea" exact element = {<BuscarTarea />} />
           <Route path = "/perfil-editar" exact element = {<PerfilEditar />} />
+          <Route path = "/alumnos" exact element = {<AlumnosAdmin />} />
         </Routes>
       </Router>
     );

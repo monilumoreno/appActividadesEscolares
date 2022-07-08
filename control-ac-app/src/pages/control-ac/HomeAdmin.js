@@ -95,7 +95,7 @@ const HomeAdmin = () => {
                                     <p>Alumnos</p>
                                 </div>
                                 <div className="stats-link">
-                                    <Link to="">Ingresar<i class="fa fa-arrow-alt-circle-right"></i></Link>
+                                    <Link to="/alumnos">Ingresar<i class="fa fa-arrow-alt-circle-right"></i></Link>
                                 </div>
                             </div>
                         </div>
