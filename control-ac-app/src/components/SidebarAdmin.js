@@ -79,10 +79,10 @@ const SidebarAdmin = () => {
                                 <div className="menu-caret"></div>
                             </Link>
                             <div className="menu-submenu">
-                                <div className="menu-item"><Link to="/usuarios-admin" className="menu-link"><div className="menu-text">Usuarios</div></Link></div>
-                                <div className="menu-item"><Link to="#" className="menu-link"><div className="menu-text">Cursos</div></Link></div>
-                                <div className="menu-item"><Link to="#" className="menu-link"><div className="menu-text">Asignaturas</div></Link></div>
-                                <div className="menu-item"><Link to="#" className="menu-link"><div className="menu-text">Alumnos</div></Link></div>
+                                <div className="menu-item"><Link to="/usuarios" className="menu-link"><div className="menu-text">Usuarios</div></Link></div>
+                                <div className="menu-item"><Link to="/cursos" className="menu-link"><div className="menu-text">Cursos</div></Link></div>
+                                <div className="menu-item"><Link to="/asignaturas" className="menu-link"><div className="menu-text">Asignaturas</div></Link></div>
+                                <div className="menu-item"><Link to="/alumnos" className="menu-link"><div className="menu-text">Alumnos</div></Link></div>
                             </div>
                         </div>
 

@@ -68,6 +68,23 @@ public class TareaService {
 		}
 	}
 	
+	public List<Tarea> findByIdDocente(Long idDocente) {
+		try {
+			Usuario docente = usuarioRepo.findById(idDocente)
+					.orElseThrow(null);
+			List<Tarea> listaTareas = tareaRepo.findByIdDocente(docente)
+					.orElseThrow(() -> new NoDataFoundException("Datos no encontrados"));
+			return listaTareas;
+			
+		} catch (ValidateServiceException | NoDataFoundException e) {
+			log.info(e.getMessage(), e);
+			throw e;
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			throw new GeneralServiceException(e.getMessage(), e);
+		}
+	}
+	
 	public List<Tarea> findAll() {
 		try {
 			List<Tarea> listaTareas = tareaRepo.findAll();

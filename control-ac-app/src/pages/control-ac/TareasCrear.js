@@ -6,7 +6,7 @@ import APIInvoke from '../../utils/APIInvoke';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const CrearTarea = () => {
+const TareasCrear = () => {
 
     const [tarea, setTarea] = useState({
         descripcionTarea: '',
@@ -235,4 +235,4 @@ const CrearTarea = () => {
     );
 }
 
-export default CrearTarea;
+export default TareasCrear;

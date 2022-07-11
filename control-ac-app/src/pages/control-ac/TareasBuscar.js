@@ -5,7 +5,7 @@ import SidebarDocte from '../../components/SidebarDocte';
 import PanelHeading from '../../components/PanelHeading';
 import APIInvoke from '../../utils/APIInvoke';
 
-const BuscarTarea = () => {
+const TareasBuscar = () => {
 
     const [paramsTarea, setParamsTarea] = useState({
         idCurso: '1',
@@ -220,4 +220,4 @@ const BuscarTarea = () => {
     );
 }
 
-export default BuscarTarea;
+export default TareasBuscar;

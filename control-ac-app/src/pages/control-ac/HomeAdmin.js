@@ -72,7 +72,7 @@ const HomeAdmin = () => {
                                     <p>Cursos</p>
                                 </div>
                                 <div className="stats-link">
-                                    <Link to="">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
+                                    <Link to="/cursos">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@ const HomeAdmin = () => {
                                     <p>Asignaturas</p>
                                 </div>
                                 <div className="stats-link">
-                                    <Link to="">Ingresar<i class="fa fa-arrow-alt-circle-right"></i></Link>
+                                    <Link to="asignaturas">Ingresar<i class="fa fa-arrow-alt-circle-right"></i></Link>
                                 </div>
                             </div>
                         </div>

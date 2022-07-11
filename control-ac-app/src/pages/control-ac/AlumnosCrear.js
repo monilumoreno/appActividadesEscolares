@@ -1,69 +1,71 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import Header from '../../components/Header';
-import PanelHeading from '../../components/PanelHeading';
-import SidebarAdmin from '../../components/SidebarAdmin';
+import React, { Fragment, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header';
+import SidebarAdmin from '../../components/SidebarAdmin';
+import PanelHeading from '../../components/PanelHeading';
 import APIInvoke from '../../utils/APIInvoke';
-import cifrador from 'js-sha512';
 import swal from 'sweetalert';
 
-const UsuariosCrear = () => {
+const AlumnosCrear = () => {
 
-    const [usuario, setUsuario] = useState({
-        tipoDocumento: '2',
-	    numeroDocumento: '',      
+    const [ alumno, setAlumno ] = useState({
+        tipoDocumento: 1,
+        numeroDocumento: '',
         nombres: '',
         apellidos: '',
         telefono: '',
         direccion: '',
-	 	correo: '',
-        nomUsuario: '',
-        clave: '',
-        idPerfil: '2'        
+        correo: '',
+        idAcudiente: '',
+        idCurso: '1'        
     })
 
-    const { tipoDocumento, numeroDocumento, nombres, apellidos, telefono, direccion, correo, nomUsuario, clave, idPerfil } = usuario;
+    const { tipoDocumento, numeroDocumento, nombres, apellidos, telefono, direccion, correo, idAcudiente, idCurso } = alumno;
 
     const onChange = (e) => {
-        setUsuario({
-            ...usuario,
+        setAlumno({
+            ...alumno,
             [e.target.name]: e.target.value
         })
-    }    
-
-    const [perfiles, setPerfiles] = useState([]);
-
-    const cargarPerfiles = async () => {
-        const response = await APIInvoke.invokeGET(`/perfiles`);
-
-        setTimeout(() => {
-            setPerfiles(response.body);
-        }, 0)
     }
 
-    const crearUsuario = async () => {
+    const [ cursos, setCursos ] = useState([]);
+
+    const cargarCursos = async () => {
+        const response = await APIInvoke.invokeGET(`/cursos`);
+        setCursos(response.body);
+    }
+
+    const [ acudientes, setAcudientes ] = useState([]);
+
+    const cargarAcudientes = async () => {
+        const response = await APIInvoke.invokeGET(`/usuarios-perfil/${3}`);
+        setAcudientes(response.body);        
+    }    
+
+    const crearAlumno = async () => {
         const data  = {
-            tipoDocumento: usuario.tipoDocumento,
-	 		numeroDocumento: usuario.numeroDocumento,
-            nombres: usuario.nombres,
-            apellidos: usuario.apellidos,
-            telefono: usuario.telefono,
-            direccion: usuario.direccion,
-	 		correo: usuario.correo,
-            usuario: usuario.correo,
-            clave: cifrador.sha512(usuario.numeroDocumento),
-            idPerfil: {
-                idPerfil: usuario.idPerfil
+            tipoDocumento: alumno.tipoDocumento,
+	 		numeroDocumento: alumno.numeroDocumento,
+            nombres: alumno.nombres,
+            apellidos: alumno.apellidos,
+            telefono: alumno.telefono,
+            direccion: alumno.direccion,
+	 		correo: alumno.correo,            
+            idCurso: {
+                idCurso: alumno.idCurso
+            },
+            idAcudiente: {
+                idUsuario: alumno.idAcudiente
             }
         }        
 
-        const response = await APIInvoke.invokePOST(`/usuarios`, data);
+        const response = await APIInvoke.invokePOST(`/alumnos`, data);
 
         if (response.ok === true) {
-            const mensaje = response.message;
             swal({
                 title: 'Información',
-                text: mensaje,
+                text: response.message,
                 icon: 'success',
                 buttons: {
                     confirm: {
@@ -75,11 +77,10 @@ const UsuariosCrear = () => {
                     }
                 }
             });
-        } else {
-            const mensaje= response.message;
+        } else {            
             swal({
                 title: 'Error',
-                text: mensaje,
+                text: response.message,
                 icon: 'error',
                 buttons: {
                     confirm: {
@@ -92,50 +93,52 @@ const UsuariosCrear = () => {
                 }
             })
         }
-        setUsuario({
-            tipoDocumento: '2',
+        setAlumno({
+            tipoDocumento: '1',
             numeroDocumento: '',
             nombres: '',
             apellidos: '',
             telefono: '',
             direccion: '',
             correo: '',
-            nomUsuario: '',
-            clave: ''
+            idCurso: '1',
+            idAcudiente: '1'            
         })
+        document.getElementById('numeroDocumento').focus();
     }
 
     useEffect(() => {
-        cargarPerfiles();
+        cargarCursos();
+        cargarAcudientes();
+        document.getElementById('numeroDocumento').focus();
     }, [])
 
     const onSubmit = (e) => {
-        e.preventDefault();        
-        crearUsuario();
+        e.preventDefault();
+        crearAlumno();
     }
 
-
-    return (
-        <Fragment>
+    return ( 
+        <Fragment>            
             <div id="app" className="app app-header-fixed app-sidebar-fixed">
                 <Header> </Header>
                 <SidebarAdmin />
                 <div id="content" className="app-content">
                     <ol className="breadcrumb float-xl-end">
                         <li className="breadcrumb-item"><Link to="/homeadmin">Inicio</Link></li>
-                        <li className="breadcrumb-item active"><Link to="/usuarios">Usuarios</Link></li>
+                        <li className="breadcrumb-item active"><Link to="/alumnos">Alumnos</Link></li>
                         <li className="breadcrumb-item active">Crear</li>
                     </ol>
-                    <h1 className="page-header">Usuarios</h1>
+                    <h1 className="page-header">Alumnos</h1>
                     <div className="panel panel-inverse col-lg-8 offset-2" data-sortable-id="crearUsuarios">
-                        <PanelHeading />
+                        <PanelHeading />                        
                         <div className="panel-body">
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
                                         <div className="card shadow-lg p-3 mb-3 bg-white">
                                             <div className="card-header center text-center border-light">
-                                                <h4>REGISTRO USUARIOS</h4>
+                                                <h4>REGISTRO ALUMNOS</h4>
                                             </div>
                                             <div className="card-body">
                                                 <form onSubmit={onSubmit} className="needs-validation" novalidate>
@@ -150,7 +153,8 @@ const UsuariosCrear = () => {
                                                                 style={{cursor: 'pointer'}}
                                                                 tabIndex="1"
                                                                 required
-                                                            >                                                                
+                                                            >   
+                                                                <option value="1">Tarjeta de identidad</option>                                                             
                                                                 <option value="2">Cédula de ciudadanía</option>
                                                                 <option value="3">Cédula de extranjería</option>
                                                                 <option value="4">Pasaporte</option>
@@ -243,36 +247,60 @@ const UsuariosCrear = () => {
                                                             <div className ="invalid-feedback">Ingresa correo</div>
                                                         </div>
                                                         <div className="col-md-6 mb-3">
-                                                            <label htmlFor="idPerfil" className="form-label fw-bold">Perfil de usuario:</label>
+                                                            <label htmlFor="idCurso" className="form-label fw-bold">Curso:</label>
                                                             <select className="form-select"
-                                                                id="idPerfil"
-                                                                name="idPerfil"
-                                                                value={idPerfil}
+                                                                id="idCurso"
+                                                                name="idCurso"
+                                                                value={idCurso}
                                                                 onChange={onChange}
                                                                 style={{cursor: 'pointer'}}
                                                                 tabIndex="8"
                                                                 required
                                                             >
                                                                 {
-                                                                    perfiles.map(
-                                                                        item =>
-                                                                        <option key={item.idPerfil} value={item.idPerfil}>{item.descripcionPerfil}</option>                                                                
+                                                                    cursos.map(
+                                                                        item => 
+                                                                            <option key={item.idCurso} value={item.idCurso}>{item.descripcionCurso}</option>
                                                                     )
-                                                                }
-                                                                
+                                                                }                                                                
                                                             </select>
                                                             <div className="invalid-feedback">Selecciona tipo de usuario</div>
                                                         </div>
                                                     </div>
+                                                    <div className="row my-2">
+                                                        <div className="col-md-12 mb-3">
+                                                            <label htmlFor="idAcudiente" className="form-label fw-bold">Acudiente:</label>
+                                                            <select className="form-control" 
+                                                                id="idAcudiente"
+                                                                name="idAcudiente"
+                                                                value={idAcudiente}
+                                                                onChange={onChange}
+                                                                style={{cursor: 'pointer'}}
+                                                                tabIndex="9"
+                                                                required
+                                                            >
+                                                                {
+                                                                    acudientes.map(
+                                                                        item =>
+                                                                            <option key={item.idUsuario} value={item.idUsuario}>
+                                                                                {`${item.nombres} ${item.apellidos}`}</option>
+                                                                    )
+                                                                }
+
+                                                                
+                                                            </select>
+                                                            <div className="invalid-feedback">Seleccione acudiente</div>
+                                                        </div>                                              
+                                                    </div>                                              
                                                     <div className="row">
                                                         <div className="col-md-6 mb-2 mb-md-0">
                                                             <button type="submit" className="btn btn-outline-success" id="crear" tabindex="9">Crear</button>
                                                             <button type="reset" className="btn btn-outline-success" id="cancelar" tabindex="10">Cancelar</button>
-                                                            <Link to="/usuarios" className="btn btn-outline-success" id="cerrar" tabindex="11">Cerrar</Link>
+                                                            <Link to="/alumnos" className="btn btn-outline-success" id="cerrar" tabindex="11">Cerrar</Link>
                                                         </div>
                                                     </div>                                                    
                                                 </form>                                                
-                                            </div>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -280,9 +308,9 @@ const UsuariosCrear = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+           </div>
         </Fragment>
     );
 }
 
-export default UsuariosCrear;
+export default AlumnosCrear;

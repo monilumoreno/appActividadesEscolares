@@ -1,56 +1,66 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import Header from '../../components/Header';
-import PanelHeading from '../../components/PanelHeading';
-import SidebarAdmin from '../../components/SidebarAdmin';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Header from '../../components/Header';
+import SidebarAdmin from '../../components/SidebarAdmin';
+import PanelHeading from '../../components/PanelHeading';
 import APIInvoke from '../../utils/APIInvoke';
-import cifrador from 'js-sha512';
 import swal from 'sweetalert';
 
-const UsuariosEditar = () => {
-
-    const { idusuario } = useParams();
+const AlumnosEditar = () => {
+    const { idalumno } = useParams();
     const navigate = useNavigate();
 
-    const [usuario, setUsuario] = useState({
-        tipoDocumento: '2',
+    const [alumno, setAlumno] = useState({
+        tipoDocumento: '1',
         numeroDocumento: '',
         nombres: '',
         apellidos: '',
         telefono: '',
         direccion: '',
         correo: '',
-        nomUsuario: '',
-        clave: '',
-        claveConfirmacion: '',
-        idPerfil: '2'
+        idAcudiente: {
+            idUsuario: '',
+        },
+        idCurso: {
+            idCurso: '1'
+        }	
     })
 
-    const { tipoDocumento, numeroDocumento, nombres, apellidos, telefono, direccion, correo, nomUsuario, clave, claveConfirmacion, idPerfil } = usuario;
+    const { tipoDocumento, numeroDocumento, nombres, apellidos, telefono, direccion, correo, idAcudiente, idCurso } = alumno;
 
     const onChange = (e) => {
-        setUsuario({
-            ...usuario,
+        setAlumno({
+            ...alumno,
             [e.target.name]: e.target.value
         })
     }
 
-    const [perfiles, setPerfiles] = useState([]);
+    const [cursos, setCursos] = useState([]);
 
-    const cargarPerfiles = async () => {
-        const response = await APIInvoke.invokeGET(`/perfiles`);
+    const cargarCursos = async () => {
+        const response = await APIInvoke.invokeGET(`/cursos`);
 
         setTimeout(() => {
-            setPerfiles(response.body);
+            setCursos(response.body);
+        }, 0)
+    }
+
+    const [acudientes, setAcudientes] = useState([]);
+
+    const cargarAcudientes = async () => {
+        const response = await APIInvoke.invokeGET(`/usuarios-perfil/${3}`);
+
+        setTimeout(() => {
+            setAcudientes(response.body);
         }, 0)
     }
 
     const findById = async () => {
-        const response = await APIInvoke.invokeGET(`/usuarios/${idusuario}`);
+        const response = await APIInvoke.invokeGET(`/alumnos/${idalumno}`);
 
         setTimeout(() => {
             if (response.ok === true) {
-                setUsuario({
+                setAlumno({
                     tipoDocumento: response.body.tipoDocumento,
                     numeroDocumento: response.body.numeroDocumento,
                     nombres: response.body.nombres,
@@ -58,10 +68,8 @@ const UsuariosEditar = () => {
                     telefono: response.body.telefono,
                     direccion: response.body.direccion,
                     correo: response.body.correo,
-                    nomUsuario: response.body.usuario,
-                    clave: response.body.clave,
-                    claveConfirmacion: response.body.clave,
-                    idPerfil: response.body.idPerfil.idPerfil
+                    idAcudiente: response.body.idAcudiente.idUsuario,
+                    idCurso: response.body.idCurso.idCurso
                 })
             } else {
 
@@ -70,9 +78,9 @@ const UsuariosEditar = () => {
     }
 
     
-        const confirmarModificacion = () =>{
+        const confirmarEdicion = () => {
             swal({
-                title: 'Editar Usuario',
+                title: 'Editar Alumno',
                 text: '¿Está seguro que quiere guardar los cambios?',
                 icon: 'warning',
                 buttons: {
@@ -94,37 +102,38 @@ const UsuariosEditar = () => {
                 }
             }).then((respuesta) => {
                 if (respuesta) {
-                    editarUsuario();            
+                    editarAlumno();            
                 } 
             });
     }
 
 
-    const editarUsuario = async () => {
+    const editarAlumno = async () => {
         const data = {
-            idUsuario: idusuario,
-            tipoDocumento: usuario.tipoDocumento,
-            numeroDocumento: usuario.numeroDocumento,
-            nombres: usuario.nombres,
-            apellidos: usuario.apellidos,
-            telefono: usuario.telefono,
-            direccion: usuario.direccion,
-            correo: usuario.correo,
-            usuario: usuario.nomUsuario,
-            clave: cifrador.sha512(usuario.clave),
-            idPerfil: {
-                idPerfil: usuario.idPerfil
-            }
+            idAlumno: idalumno,
+            tipoDocumento: alumno.tipoDocumento,
+            numeroDocumento: alumno.numeroDocumento,
+            nombres: alumno.nombres,
+            apellidos: alumno.apellidos,
+            telefono: alumno.telefono,
+            direccion: alumno.direccion,
+            correo: alumno.correo,            
+            idAcudiente: {
+                idUsuario: alumno.idAcudiente
+            },
+            idCurso: {
+                idCurso: alumno.idCurso
+            }	
         }
 
-        const response = await APIInvoke.invokePUT(`/usuarios`, data);
+        const response = await APIInvoke.invokePUT(`/alumnos`, data);
 
         if (response.ok === true) {
-            navigate(`/usuarios`);
-            const mensaje = response.message;
+            navigate(`/alumnos`);
+            
             swal({
                 title: 'Información',
-                text: mensaje,
+                text: response.message,
                 icon: 'success',
                 buttons: {
                     confirm: {
@@ -136,11 +145,10 @@ const UsuariosEditar = () => {
                     }
                 }
             });
-        } else {
-            const mensaje = response.message;
+        } else {            
             swal({
                 title: 'Error',
-                text: mensaje,
+                text: response.message,
                 icon: 'error',
                 buttons: {
                     confirm: {
@@ -156,39 +164,14 @@ const UsuariosEditar = () => {
     }
 
     useEffect(() => {
-        cargarPerfiles();
+        cargarCursos();
+        cargarAcudientes();
         findById();
     }, [])
 
     const onSubmit = (e) => {
         e.preventDefault();
-
-        const password1 = document.getElementById('clave');
-        const password2 = document.getElementById('claveConfirmacion');
-
-        // Verificamos si las constraseñas no coinciden ;
-        if (password1.value != '' && password2.value != '') {
-
-            if (password1.value === password2.value) {                
-                confirmarModificacion();
-            } else {
-                swal({
-                    title: 'Error',
-                    text: 'La contraseña y la confirmación no coinciden',
-                    icon: 'error',
-                    buttons: {
-                        confirm: {
-                            text: 'Aceptar',
-                            value: true,
-                            visible: true,
-                            className: 'btn btn-danger',
-                            closeModal: true
-                        }
-                    }
-                })
-                document.getElementById("clave").focus();
-            }
-        }        
+        confirmarEdicion();
     }
 
 
@@ -200,10 +183,10 @@ const UsuariosEditar = () => {
                 <div id="content" className="app-content">
                     <ol className="breadcrumb float-xl-end">
                         <li className="breadcrumb-item"><Link to="/homeadmin">Inicio</Link></li>
-                        <li className="breadcrumb-item active"><Link to="">Usuarios</Link></li>
-                        <li className="breadcrumb-item active"><Link to="">Editar</Link></li>
+                        <li className="breadcrumb-item active"><Link to="/alumnos">Alumnos</Link></li>
+                        <li className="breadcrumb-item active">Editar</li>
                     </ol>
-                    <h1 className="page-header"><span className="badge bg-success ms-5px">Usuarios</span></h1>
+                    <h1 className="page-header">Alumnos</h1>
                     <div className="panel panel-inverse col-lg-8 offset-2" data-sortable-id="crearUsuarios">
                         <PanelHeading />
                         <div className="panel-body">
@@ -212,7 +195,7 @@ const UsuariosEditar = () => {
                                     <div className="col-lg-12">
                                         <div className="card shadow-lg p-3 mb-3 bg-white">
                                             <div className="card-header center text-center border-light">
-                                                <h4>EDITAR USUARIOS</h4>
+                                                <h4>EDITAR ALUMNOS</h4>
                                             </div>
                                             <div className="card-body">
                                                 <form onSubmit={onSubmit} className="needs-validation" novalidate>
@@ -228,6 +211,7 @@ const UsuariosEditar = () => {
                                                                 tabIndex="1"
                                                                 required
                                                             >
+                                                                <option value="1">Tarjeta de identidad</option>
                                                                 <option value="2">Cédula de ciudadanía</option>
                                                                 <option value="3">Cédula de extranjería</option>
                                                                 <option value="4">Pasaporte</option>
@@ -320,70 +304,51 @@ const UsuariosEditar = () => {
                                                             <div className="invalid-feedback">Ingresa correo</div>
                                                         </div>
                                                         <div className="col-md-6 mb-3">
-                                                            <label htmlFor="nomUsuario" className="form-label fw-bold">Nombre de usuario:</label>
-                                                            <input type="text" className="form-control"
-                                                                id="nomUsuario"
-                                                                name="nomUsuario"
-                                                                value={nomUsuario}
-                                                                onChange={onChange}
-                                                                tabIndex="8"
-                                                                placeholder="Ingrese nombre de usuario"
-                                                                required
-                                                            />
-                                                            <div className="invalid-feedback">Ingrese nombre de usuario</div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="row my-2">
-                                                        <div className="col-md-6 mb-3">
-                                                            <label htmlFor="clave" className="form-label fw-bold">Contraseña:</label>
-                                                            <input type="password" className="form-control"
-                                                                id="clave"
-                                                                name="clave"
-                                                                value={clave}
-                                                                onChange={onChange}
-                                                                tabIndex="9"
-                                                                placeholder="Ingrese contraseña"
-                                                                required
-                                                            />
-                                                            <div className="invalid-feedback">Ingresa contraseña</div>
-                                                        </div>
-                                                        <div className="col-md-6 mb-3">
-                                                            <label htmlFor="claveConfirmacion" className="form-label fw-bold">Confirmación contraseña:</label>
-                                                            <input type="password" className="form-control"
-                                                                id="claveConfirmacion"
-                                                                name="claveConfirmacion"
-                                                                value={claveConfirmacion}
-                                                                onChange={onChange}
-                                                                tabIndex="10"
-                                                                placeholder="Ingrese de nuevo la contraseña"
-                                                                required
-                                                            />
-                                                            <div className="invalid-feedback">Ingrese de nuevo la contraseña</div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="my-2">
-                                                        <div className="col-md-6 mb-3">
-                                                            <label htmlFor="idPerfil" className="form-label fw-bold">Perfil de usuario:</label>
+                                                            <label htmlFor="idCurso" className="form-label fw-bold">Curso:</label>
                                                             <select className="form-select"
-                                                                id="idPerfil"
-                                                                name="idPerfil"
-                                                                value={idPerfil}
+                                                                id="idCurso"
+                                                                name="idCurso"
+                                                                value={idCurso}
                                                                 onChange={onChange}
-                                                                style={{ cursor: 'pointer' }}
-                                                                tabIndex="11"
+                                                                style={{cursor: 'pointer'}}
+                                                                tabIndex="8"
                                                                 required
                                                             >
                                                                 {
-                                                                    perfiles.map(
-                                                                        item =>
-                                                                            <option key={item.idPerfil} value={item.idPerfil}>{item.descripcionPerfil}</option>
+                                                                    cursos.map(
+                                                                        item => 
+                                                                            <option key={item.idCurso} value={item.idCurso}>{item.descripcionCurso}</option>
                                                                     )
-                                                                }
-
+                                                                }                                                                
                                                             </select>
                                                             <div className="invalid-feedback">Selecciona tipo de usuario</div>
                                                         </div>
                                                     </div>
+                                                    <div className="row my-2">
+                                                        <div className="col-md-12 mb-3">
+                                                            <label htmlFor="idAcudiente" className="form-label fw-bold">Acudiente:</label>
+                                                            <select className="form-control" 
+                                                                id="idAcudiente"
+                                                                name="idAcudiente"
+                                                                value={idAcudiente}
+                                                                onChange={onChange}
+                                                                style={{cursor: 'pointer'}}
+                                                                tabIndex="9"
+                                                                required
+                                                            >
+                                                                {
+                                                                    acudientes.map(
+                                                                        item =>
+                                                                            <option key={item.idUsuario} value={item.idUsuario}>
+                                                                                {`${item.nombres} ${item.apellidos}`}</option>
+                                                                    )
+                                                                }
+
+                                                                
+                                                            </select>
+                                                            <div className="invalid-feedback">Seleccione acudiente</div>
+                                                        </div>                                              
+                                                    </div>                                              
                                                     <div className="row">
                                                         <div className="col-md-6 mb-2 mb-md-0">
                                                             <button type="submit" className="btn btn-outline-success" id="guardar" tabindex="9">Guardar</button>
@@ -407,5 +372,5 @@ const UsuariosEditar = () => {
         </Fragment>
     );
 }
-
-export default UsuariosEditar;
+ 
+export default AlumnosEditar;

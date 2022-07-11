@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import SidebarDocte from '../../components/SidebarDocte'
 
+
 const HomeDocente = () => {
     return (
         <Fragment>
@@ -23,7 +24,7 @@ const HomeDocente = () => {
                                     <p>Crear Actividad</p>
                                 </div>
                                 <div className="stats-link">
-                                    <Link to="/crear-actividad">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
+                                    <Link to="/tareas-crear">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
                                 </div>
                             </div>
                         </div>                        
@@ -34,7 +35,7 @@ const HomeDocente = () => {
                                     <p>Calificar Actividad</p>
                                 </div>
                                 <div className="stats-link">
-                                    <Link to="/buscar-tarea">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
+                                    <Link to="">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
                                 </div>
                             </div>
                         </div>
