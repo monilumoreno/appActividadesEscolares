@@ -16,6 +16,8 @@ import AlumnosAdmin from './pages/control-ac/AlumnosAdmin';
 import AlumnosCrear from './pages/control-ac/AlumnosCrear';
 import AlumnosEditar from './pages/control-ac/AlumnosEditar';
 import TareasAdmin from './pages/control-ac/TareasAdmin';
+import TareasDetalle from './pages/control-ac/TareasDetalle';
+import TareasCalificar from './pages/control-ac/TareasCalificar';
 
 const App = () => {
     return (
@@ -35,7 +37,9 @@ const App = () => {
           <Route path = '/alumnos-editar/:idalumno' exact element = {<AlumnosEditar />}/>
           <Route path = '/tareas' exact element = {<TareasAdmin />} />
           <Route path = '/tareas-crear' exact element = {<TareasCrear />} />
-          <Route path = '/tareas-buscar' exact element = {<TareasBuscar />} />
+          <Route path = '/tareas-detalle/:idtarea' exact element = {<TareasDetalle />} />
+          <Route path = '/tareas-calificar/:idreltarea' exact element = {<TareasCalificar />} />
+          <Route path = '/tareas-buscar' exact element = {<TareasBuscar />} />          
           <Route path = '/perfil-editar' exact element = {<PerfilEditar />} />          
         </Routes>
       </Router>

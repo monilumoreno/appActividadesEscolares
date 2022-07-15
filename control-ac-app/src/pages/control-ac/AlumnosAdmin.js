@@ -15,7 +15,7 @@ const AlumnosAdmin = () => {
 
     const cargarAlumnos = async (idCurso) => {
         let response
-        if (idCurso == 0) {
+        if (idCurso === 0) {
             response = await APIInvoke.invokeGET(`/alumnos`);    
         } else {
             response = await APIInvoke.invokeGET(`/alumnos-curso/${idCurso}`);

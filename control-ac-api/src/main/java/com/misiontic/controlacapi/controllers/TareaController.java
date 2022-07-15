@@ -86,18 +86,6 @@ public class TareaController {
 	}
 	
 	/**
-	 * Recupera tareas por ID docente
-	 * Parámetros: ID docente
-	 * Retorna: Listado de tareas
-	 */	
-	@GetMapping(value = "/tareas-docente/{docenteId}")
-	public ResponseEntity<WrapperResponse<List<TareaDTO>>> findByDocente(@PathVariable("docenteId") Long docenteId) {
-		List<Tarea> listaTareas = tareaService.findByIdDocente(docenteId);
-		List<TareaDTO> listaTareasDTO = converter.fromEntity(listaTareas);
-		return new WrapperResponse<>(true, "Tareas registradas", listaTareasDTO).createResponse(HttpStatus.OK);		
-	}
-	
-	/**
 	 * Crea una nueva tarea
 	 * Parámetros: Objeto TareaDTO
 	 * Retorna: Listado con los datos específicos de la tarea por cada alumno

@@ -41,13 +41,6 @@ public class UsuarioController {
 		return new WrapperResponse<>(true, "Usuario encontrado", usuarioDTO).createResponse(HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/usuarios-perfil/{perfilId}")
-	public ResponseEntity<WrapperResponse<List<UsuarioDTO>>> findByIdPerfil(@PathVariable("perfilId") Long perfilId) {
-		List<Usuario> listaUsuarios = usuarioService.findByIdPerfil(perfilId);
-		List<UsuarioDTO> listaUsuariosDTO = converter.fromEntity(listaUsuarios);
-		return new WrapperResponse<>(true, "Usuarios encontrados", listaUsuariosDTO).createResponse(HttpStatus.OK);
-	}
-	
 	/**
 	 * Obtiene los usuarios registrados
 	 * Parámetros: 

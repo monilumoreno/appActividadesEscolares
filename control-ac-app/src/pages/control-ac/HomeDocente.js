@@ -35,7 +35,7 @@ const HomeDocente = () => {
                                     <p>Calificar Actividad</p>
                                 </div>
                                 <div className="stats-link">
-                                    <Link to="">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
+                                    <Link to="/tareas">Ingresar<i className="fa fa-arrow-alt-circle-right"></i></Link>
                                 </div>
                             </div>
                         </div>

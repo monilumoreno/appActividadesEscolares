@@ -2,20 +2,21 @@ package com.misiontic.controlacapi.services;
 
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
 import com.misiontic.controlacapi.converters.UsuarioConverter;
 import com.misiontic.controlacapi.dtos.LoginRequestDTO;
 import com.misiontic.controlacapi.dtos.LoginResponseDTO;
-import com.misiontic.controlacapi.entities.Perfil;
 import com.misiontic.controlacapi.entities.Usuario;
 import com.misiontic.controlacapi.exceptions.GeneralServiceException;
 import com.misiontic.controlacapi.exceptions.NoDataFoundException;
 import com.misiontic.controlacapi.exceptions.ValidateServiceException;
-import com.misiontic.controlacapi.repositories.PerfilRepository;
 import com.misiontic.controlacapi.repositories.UsuarioRepository;
 import com.misiontic.controlacapi.validators.UsuarioValidator;
+
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -34,8 +35,6 @@ public class UsuarioService {
 		
 	@Autowired
 	private UsuarioRepository usuarioRepo;
-	@Autowired
-	private PerfilRepository perfilRepo;
 	private UsuarioConverter converter = new UsuarioConverter();
 	
 	public Usuario findById(Long idUsuario) {
@@ -51,23 +50,6 @@ public class UsuarioService {
 			throw new GeneralServiceException(e.getMessage(), e);
 		}
 	}
-	
-	public List<Usuario> findByIdPerfil(Long idPerfil) {
-		    
-		    try {
-		        Perfil perfil = perfilRepo.findById(idPerfil)
-		        		.orElseThrow(() -> new NoDataFoundException("Perfil no registrado"));
-		        List<Usuario> listaUsuarios = usuarioRepo.findByIdPerfil(perfil)
-		        .orElseThrow(() -> new NoDataFoundException("Usuarios no registrados"));
-		        return listaUsuarios;
-		    } catch (ValidateServiceException | NoDataFoundException e) {
-				log.info(e.getMessage(), e);
-				throw e;
-			} catch (Exception e) {
-				log.error(e.getMessage(), e);
-				throw new GeneralServiceException(e.getMessage(), e);
-			}	    
-		}
 
 	public void delete(Long idUsuario) {
 		try {

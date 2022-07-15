@@ -138,7 +138,7 @@ const PerfilEditar = () => {
         const password2 = document.getElementById('claveConfirmacion');
 
         // Verificamos si las constraseñas no coinciden 
-        if (password1.value != '' && password2.value != '') {
+        if (password1.value !== '' && password2.value != '') {
 
             if (password1.value === password2.value) {
                 editarUsuario();

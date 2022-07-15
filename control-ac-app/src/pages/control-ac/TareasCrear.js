@@ -218,7 +218,7 @@ const TareasCrear = () => {
                                                         <div className="col-md-12 mb-2 mb-md-0">
                                                             <button type="submit" className="btn btn-outline-success" tabIndex="5" id="crear">Crear</button>
                                                             <button type="reset" className="btn btn-outline-success" tabIndex="6" id="cancelar">Cancelar</button>
-                                                            <Link to="/homedocente" className="btn btn-outline-success" tabIndex="7" id="cerrar">Cerrar</Link>
+                                                            <Link to="/tareas" className="btn btn-outline-success" tabIndex="7" id="cerrar">Cerrar</Link>
                                                         </div>
                                                     </div>
                                                 </form>

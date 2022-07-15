@@ -105,7 +105,7 @@ const Login = () => {
 				});
 				
 			}		
-		}, 4000);
+		}, 0);
 	}
 
 	const onSubmit = (e) => {
