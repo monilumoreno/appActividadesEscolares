@@ -116,7 +116,7 @@ const CursosAdmin = () => {
                 <SidebarAdmin />
                 <div id="content" className="app-content">
                     <ol className="breadcrumb float-xl-end"> 
-                        <li className="breadcrumb-item"><Link to="homeadmin">Inicio</Link></li>								                       
+                        <li className="breadcrumb-item"><Link to="/homeadmin">Inicio</Link></li>								                       
                         <li className="breadcrumb-item active">Cursos</li>
                     </ol>
                     <h1 className="page-header">Cursos</h1>

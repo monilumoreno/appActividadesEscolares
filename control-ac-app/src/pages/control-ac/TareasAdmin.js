@@ -314,7 +314,7 @@ const TareasAdmin = () => {
                                                     <td>{item.idCurso.descripcionCurso}</td>                                                    
                                                     <td nowrap="">
                                                         <Link to={`/tareas-detalle/${item.idTarea}`} className="btn btn-sm btn-primary w-40px me-1">
-                                                            <i className="fa fa-eye"></i>
+                                                            <i className="fa fa-check-square"></i>
                                                         </Link>
                                                         <Link to={`/tareas-editar/${item.idTarea}`} className="btn btn-sm btn-success w-40px me-1">
                                                             <i className="fa fa-edit"></i>
