@@ -93,7 +93,8 @@ const Login = () => {
 					setUsuario({
 					nombreUsuario: '',
 					clave: ''
-				});				
+				});		
+				document.getElementById('nombreUsuario').focus();				
 			}		
 		}, 0);
 	}

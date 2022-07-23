@@ -65,7 +65,20 @@ const UsuariosEditar = () => {
                     idPerfil: response.body.idPerfil.idPerfil
                 })
             } else {
-
+                swal({
+                    title: 'Error',
+                    text: response.message,
+                    icon: 'error',
+                    buttons: {
+                        confirm: {
+                            text: 'Aceptar',
+                            value: true,
+                            visible: true,
+                            className: 'btn btn-danger',
+                            closeModal: true
+                        }
+                    }
+                })
             }
         }, 0)
     }
@@ -121,7 +134,10 @@ const UsuariosEditar = () => {
         const response = await APIInvoke.invokePUT(`/usuarios`, data);
 
         if (response.ok === true) {
-            navigate(`/usuarios`);
+            setTimeout(() => {
+                navigate(`/usuarios`);
+            }, 2000);
+            
             const mensaje = response.message;
             swal({
                 title: 'Información',
@@ -386,9 +402,9 @@ const UsuariosEditar = () => {
                                                     </div>
                                                     <div className="row">
                                                         <div className="col-md-6 mb-2 mb-md-0">
-                                                            <button type="submit" className="btn btn-outline-success" id="guardar" tabindex="9">Guardar</button>
-                                                            <button type="reset" className="btn btn-outline-success" id="cancelar" tabindex="10">Cancelar</button>
-                                                            <Link to="/usuarios" className="btn btn-outline-success" id="cerrar" tabindex="11">Cerrar</Link>
+                                                            <button type="submit" className="btn btn-success me-1" id="guardar" tabindex="9">Guardar</button>
+                                                            <button type="reset" className="btn btn-success me-1" id="cancelar" tabindex="10">Cancelar</button>
+                                                            <Link to="/usuarios" className="btn btn-success me-1" id="cerrar" tabindex="11">Cerrar</Link>
                                                         </div>
                                                     </div>
                                                 </form>                                                

@@ -15,7 +15,7 @@ const TareasListaAcu = () => {
 
     const cargarTareas = async () => {
         const response = await APIInvoke.invokeGET(`/lista-por-alumno/${idalumno}`);
-        setTimeout(() => {
+        
             if (response.body.length > 0) {
                 setTareas(response.body);
             } else {
@@ -33,9 +33,12 @@ const TareasListaAcu = () => {
                         }
                     }
                 })
-                navigate('/alumnos-listar');
+                setTimeout(() => {
+                    navigate('/alumnos-listar');
+                }, 200);
+                
             }
-        }, 0);
+        
     }
 
     useEffect(() => {

@@ -102,9 +102,16 @@ const TareasCalificar = () => {
         
         setTimeout(() => {
             navigate(`/tareas-detalle/${relTareasAlumno.idTarea}`);    
-        }, 2000);        
+        }, 3000);        
     }
 
+    const reset = () => {
+        setRelTareaAlumno({
+            observaciones: '',
+            calificacion: 0,
+        })
+        document.getElementById('observaciones').focus();
+    }
     const onChange = (e) => {
         setRelTareaAlumno({
             ...relTareasAlumno,
@@ -230,9 +237,9 @@ const TareasCalificar = () => {
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12 mb-2">
-                                                            <button type="submit" class="btn btn-primary me-1" id="guardar">Guardar</button>
-                                                            <button type="reset" class="btn btn-success me-1" id="cancelar">Cancelar</button>
-                                                            <Link to={`/tareas-detalle/${relTareasAlumno.idTarea}`} class="btn btn-danger" id="cerrar">Cerrar</Link>
+                                                            <button type="submit" class="btn btn-success me-1" id="guardar">Guardar</button>
+                                                            <button onClick={reset} type="reset" class="btn btn-success me-1" id="cancelar">Cancelar</button>
+                                                            <Link to={`/tareas-detalle/${relTareasAlumno.idTarea}`} class="btn btn-success" id="cerrar">Cerrar</Link>
                                                         </div>
                                                     </div>
                                                 </form>

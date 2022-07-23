@@ -24,7 +24,7 @@ const Header = () => {
         <Fragment>
 			<div id="header" className="app-header">
 				<div className="navbar-header">
-					<Link to="/" className="navbar-brand">
+					<Link to="#" className="navbar-brand">
 						<img className="rounded-circle" src="../assets/img/logo/logoControl.jpg" alt="Control de Actividades Escolares"/>
 						<span className="navbar-brand mb-0 h1"><b>Control Actividades Escolares</b></span>											
 					</Link>

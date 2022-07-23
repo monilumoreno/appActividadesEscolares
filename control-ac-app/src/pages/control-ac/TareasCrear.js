@@ -45,6 +45,7 @@ const TareasCrear = () => {
     useEffect(() => {
         cargarCursos();
         cargarAsignaturas();
+        document.getElementById('idCurso').focus();
     }, [])
 
     const onChange = e => {
@@ -53,7 +54,6 @@ const TareasCrear = () => {
             [e.target.name]: e.target.value
         })
     }
-
 
     const crearActividad = async () => {
         const data = {
@@ -104,8 +104,11 @@ const TareasCrear = () => {
                     }
                 }
             });
-        }
+        }  
+        reset();
+    }
 
+    const reset = () => {
         setTarea({
             descripcionTarea: '',            
             fechaEntrega: '',            
@@ -113,6 +116,7 @@ const TareasCrear = () => {
             idAsignatura: '1',
             idDocente: localStorage.idUsuario
         })
+        document.getElementById('idCurso').focus();
     }
 
     const onSubmit = e => {
@@ -216,9 +220,9 @@ const TareasCrear = () => {
                                                     </div>
                                                     <div className="row">
                                                         <div className="col-md-12 mb-2 mb-md-0">
-                                                            <button type="submit" className="btn btn-outline-success" tabIndex="5" id="crear">Crear</button>
-                                                            <button type="reset" className="btn btn-outline-success" tabIndex="6" id="cancelar">Cancelar</button>
-                                                            <Link to="/tareas" className="btn btn-outline-success" tabIndex="7" id="cerrar">Cerrar</Link>
+                                                            <button type="submit" className="btn btn-success me-1" tabIndex="5" id="crear">Crear</button>
+                                                            <button onClick={reset} type="reset" className="btn btn-success me-1" tabIndex="6" id="cancelar">Cancelar</button>
+                                                            <Link to="/tareas" className="btn btn-success me-1" tabIndex="7" id="cerrar">Cerrar</Link>
                                                         </div>
                                                     </div>
                                                 </form>

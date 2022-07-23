@@ -10,9 +10,10 @@ const PerfilEditar = () => {
 
     const idusuario = localStorage.idUsuario;    
     const navigate = useNavigate();
-    
+    const [claveAnterior, setClaveAnterior ] = useState();    
+
     const [usuario, setUsuario] = useState({
-        tipoDocumento: '2',
+        tipoDocumento: '',
         numeroDocumento: '',
         nombres: '',
         apellidos: '',
@@ -51,7 +52,7 @@ const PerfilEditar = () => {
                 claveConfirmacion: response.body.clave,
                 idPerfil: response.body.idPerfil.idPerfil            
             })
-            
+            setClaveAnterior(response.body.clave);            
         } else {
             swal({
                 title: 'Error',
@@ -72,6 +73,12 @@ const PerfilEditar = () => {
 
     const editarUsuario = async () => {
 
+        let claveNueva = usuario.clave;
+        
+        if (claveAnterior != usuario.clave) {            
+            claveNueva = cifrador.sha512(usuario.clave);                
+        }        
+
         const data = {
             idUsuario: idusuario,
             tipoDocumento: usuario.tipoDocumento,
@@ -81,12 +88,11 @@ const PerfilEditar = () => {
             telefono: usuario.telefono,
             direccion: usuario.direccion,
             correo: usuario.correo,
-            usuario: usuario.nomUsuario,
-            clave: cifrador.sha512(usuario.clave),
-            //clave: usuario.clave,
+            usuario: usuario.nomUsuario,            
+            clave: claveNueva,            
             idPerfil: {
                 idPerfil: usuario.idPerfil
-            }
+            }            
         }
 
         const response = await APIInvoke.invokePUT(`/usuarios`, data);
@@ -126,7 +132,7 @@ const PerfilEditar = () => {
                 })
             }
             redireccionar();
-        }, 2000);        
+        }, 0);        
     }
 
     useEffect(() => {        
@@ -165,18 +171,19 @@ const PerfilEditar = () => {
     }
 
     const redireccionar = () => {
-
-        switch (usuario.idPerfil) {
-            case 1:
-                navigate('/homeadmin');
-                break;
-            case 2:
-                navigate('/homedocente');
-                break;
-            case 3:
-                navigate('/homeacudiente');
-                break;									
-        }
+        setTimeout(() => {
+            switch (usuario.idPerfil) {
+                case 1:                
+                    navigate('/homeadmin');
+                    break;
+                case 2:
+                    navigate('/homedocente');
+                    break;
+                case 3:
+                    navigate('/homeacudiente');
+                    break;									
+            }    
+        }, 2000);        
     }
 
     return (
@@ -321,6 +328,7 @@ const PerfilEditar = () => {
                                                                 name="clave"
                                                                 value={clave}
                                                                 onChange={onChange}
+                                                                maxLength="300"
                                                                 tabIndex="9"
                                                                 placeholder="Ingrese contraseña"
                                                                 required
@@ -334,6 +342,7 @@ const PerfilEditar = () => {
                                                                 name="claveConfirmacion"
                                                                 value={claveConfirmacion}
                                                                 onChange={onChange}
+                                                                maxLength="300"
                                                                 tabIndex="10"
                                                                 placeholder="Ingrese de nuevo la contraseña"
                                                                 required
@@ -343,9 +352,9 @@ const PerfilEditar = () => {
                                                     </div>                                                    
                                                     <div className="row">
                                                         <div className="col-md-6 mb-2 mb-md-0">
-                                                            <button type="submit" className="btn btn-outline-success" id="guardar" tabindex="9">Guardar</button>
-                                                            <button type="reset" className="btn btn-outline-success" id="cancelar" tabindex="10">Cancelar</button>
-                                                            <button type="submit" className="btn btn-outline-success" id="cerrar" tabindex="11" onClick={redireccionar} >Cerrar</button>
+                                                            <button type="submit" className="btn btn-success me-1" id="guardar" tabindex="9">Guardar</button>
+                                                            <button type="reset" className="btn btn-success me-1" id="cancelar" tabindex="10">Cancelar</button>
+                                                            <button type="submit" className="btn btn-success me-1" id="cerrar" tabindex="11" onClick={redireccionar} >Cerrar</button>
                                                         </div>
                                                     </div>
                                                 </form>                                                

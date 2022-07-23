@@ -10,7 +10,7 @@ const AsignaturasAdmin = () => {
     const [ asignaturas, setAsignaturas ] = useState([]);
 
     const cargarAsignaturas = async () => {           
-        const response = await APIInvoke.invokeGET(`/asignaturas`);            
+        const response = await APIInvoke.invokeGET(`/asignaturas-activas`);            
         setAsignaturas(response.body);
     }
     
@@ -18,10 +18,10 @@ const AsignaturasAdmin = () => {
         cargarAsignaturas();
     }, [])    
     
-    const confirmarEliminacion = (e, idAlumno) => {
+    const confirmarEliminacion = (e, idAsignatura) => {
         e.preventDefault();
         swal({
-            title: 'Eliminar Alumno',
+            title: 'Eliminar Asignatura',
             text: '¿Está seguro que quiere eliminar el registro?',
             icon: 'warning',
             buttons: {
@@ -43,18 +43,19 @@ const AsignaturasAdmin = () => {
             }
         }).then((respuesta) => {
             if (respuesta) {
-                elimniarAlumno(idAlumno);
+                eliminarAsignatura(idAsignatura);
             }
         });
     }
 
-    const elimniarAlumno = async (idAlumno) => {
-        const response = await APIInvoke.invokeDELETE(`/alumnos/${idAlumno}`);
+    const eliminarAsignatura = async (idAsignatura) => {
+        //const response = await APIInvoke.invokeDELETE(`/asignaturas/${idAsignatura}`);
+        const response = await APIInvoke.invokePUT(`/asignaturas/${idAsignatura}`);
         setTimeout(() => {
             if (response.ok === true) {
                 cargarAsignaturas();
                 swal({
-                    title: 'Eliminar Alumno',
+                    title: 'Eliminar Asignatura',
                     text: response.message,
                     icon: 'success',
                     buttons: {
@@ -69,7 +70,7 @@ const AsignaturasAdmin = () => {
                 })
             } else {
                 swal({
-                    title: 'Eliminar Alumno',
+                    title: 'Eliminar Asignatura',
                     text: '!! Ocurrió un error al intentar eliminar el registro ¡¡',
                     icon: 'error',
                     buttons: {
@@ -115,7 +116,7 @@ const AsignaturasAdmin = () => {
                     <div className='col-6 offset-3'>
                         <div className="row mb-2">
                             <div className="col-4">
-                                <Link to="/asignaturas-crear" className="btn btn-green fs-bold me-3">Crear nueva asignatura</Link>
+                                <Link to="/asignaturas-crear" className="btn btn-green fs-bold me-3">Crear Asignatura</Link>
                             </div>                            
                             <div className="col-8">
                                 <div className="input-group">

@@ -32,7 +32,7 @@ const AlumnosCrear = () => {
     const [ cursos, setCursos ] = useState([]);
 
     const cargarCursos = async () => {
-        const response = await APIInvoke.invokeGET(`/cursos`);
+        const response = await APIInvoke.invokeGET(`/cursos-activos`);
         setCursos(response.body);
     }
 
@@ -93,17 +93,7 @@ const AlumnosCrear = () => {
                 }
             })
         }
-        setAlumno({
-            tipoDocumento: '1',
-            numeroDocumento: '',
-            nombres: '',
-            apellidos: '',
-            telefono: '',
-            direccion: '',
-            correo: '',
-            idCurso: '1',
-            idAcudiente: '1'            
-        })
+        reset();        
         document.getElementById('numeroDocumento').focus();
     }
 
@@ -115,7 +105,23 @@ const AlumnosCrear = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        document.getElementById('numeroDocumento').focus();
         crearAlumno();
+    }
+
+    const reset = () => {
+        setAlumno({
+            tipoDocumento: '1',
+            numeroDocumento: '',
+            nombres: '',
+            apellidos: '',
+            telefono: '',
+            direccion: '',
+            correo: '',
+            idCurso: '1',
+            idAcudiente: '1',            
+        })
+        document.getElementById('numeroDocumento').focus();
     }
 
     return ( 
@@ -292,9 +298,9 @@ const AlumnosCrear = () => {
                                                     </div>                                              
                                                     <div className="row">
                                                         <div className="col-md-6 mb-2 mb-md-0">
-                                                            <button type="submit" className="btn btn-outline-success" id="crear" tabindex="9">Crear</button>
-                                                            <button type="reset" className="btn btn-outline-success" id="cancelar" tabindex="10">Cancelar</button>
-                                                            <Link to="/alumnos" className="btn btn-outline-success" id="cerrar" tabindex="11">Cerrar</Link>
+                                                            <button type="submit" className="btn btn-success me-1" id="crear" tabindex="20">Crear</button>
+                                                            <button onClick={reset} type="reset" className="btn btn-success me-1" id="cancelar" tabindex="21">Cancelar</button>
+                                                            <Link to="/alumnos" className="btn btn-success  me-1" id="cerrar" tabindex="22">Cerrar</Link>
                                                         </div>
                                                     </div>                                                    
                                                 </form>                                                

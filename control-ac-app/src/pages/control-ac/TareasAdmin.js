@@ -8,8 +8,7 @@ import swal from 'sweetalert';
 
 const TareasAdmin = () => {
 
-    const navigate = useNavigate();
-    
+   
     //Define un estado para consumir el servicio
     const [ tareas, setTareas ] = useState([]);
     const [ cursos, setCursos ] = useState([]);
@@ -24,7 +23,7 @@ const TareasAdmin = () => {
     const { idCurso, idAsignatura, idDocente } = paramsRequest;
 
     const cargarCursos = async () => {
-        //const response = await APIInvoke.invokeGET(`/cursos`);
+        
         const response = await APIInvoke.invokeGET(`/cursos-activos`);
         setTimeout(() => {
             const temporal = response.body;
@@ -314,9 +313,15 @@ const TareasAdmin = () => {
                                                     <td>{item.idAsignatura.descripcionAsignatura}</td>
                                                     <td>{item.idCurso.descripcionCurso}</td>                                                    
                                                     <td nowrap="">
-                                                        <Link to={`/tareas-detalle/${item.idTarea}`} className="btn btn-sm btn-primary w-70px me-1">Revisar</Link>
-                                                        <Link to={`/tareas-editar/${item.idTarea}`} className="btn btn-sm btn-success w-70px me-1">Editar</Link>
-                                                        <button onClick={(e) => confirmarElimninacion(e, item.idTarea)} className="btn btn-sm btn-danger w-70px">Eliminar</button>
+                                                        <Link to={`/tareas-detalle/${item.idTarea}`} className="btn btn-sm btn-primary w-40px me-1">
+                                                            <i className="fa fa-eye"></i>
+                                                        </Link>
+                                                        <Link to={`/tareas-editar/${item.idTarea}`} className="btn btn-sm btn-success w-40px me-1">
+                                                            <i className="fa fa-edit"></i>
+                                                        </Link>
+                                                        <button onClick={(e) => confirmarElimninacion(e, item.idTarea)} className="btn btn-sm btn-danger w-40px">
+                                                            <i className="fa fa-trash-alt"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
 

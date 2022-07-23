@@ -31,8 +31,11 @@ const AlumnosListar = () => {
                             closeModal: true
                         }
                     }
-                })                   
-                navigate('/homeacudiente');
+                })   
+                setTimeout(() => {
+                    navigate('/homeacudiente');    
+                }, 2000);                
+                
             }   
         }, 0);                 
     }

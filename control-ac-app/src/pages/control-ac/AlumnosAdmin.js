@@ -12,8 +12,7 @@ const AlumnosAdmin = () => {
     const cargarAlumnos = async (idCurso) => {   
         
         let response
-        if (idCurso == 0) {
-            //response = await APIInvoke.invokeGET(`/alumnos`);            
+        if (idCurso == 0) {            
             response = await APIInvoke.invokeGET(`/alumnos-activos`);            
         } else {
             response = await APIInvoke.invokeGET(`/alumnos-curso/${idCurso}`);
@@ -24,7 +23,6 @@ const AlumnosAdmin = () => {
     const [ cursos, setCursos ] = useState([]);    
     
     const cargarCursos = async () => {       
-        //const response = await APIInvoke.invokeGET(`/cursos`);
         const response = await APIInvoke.invokeGET(`/cursos-activos`);
         setTimeout(() => {
             const temporal = response.body;
@@ -77,7 +75,7 @@ const AlumnosAdmin = () => {
     }
 
     const elimniarAlumno = async (idAlumno) => {
-        //const response = await APIInvoke.invokeDELETE(`/alumnos/${idAlumno}`);
+        
         const response = await APIInvoke.invokePUT(`/alumnos/${idAlumno}`);
         setTimeout(() => {
             if (response.ok === true) {
@@ -143,7 +141,7 @@ const AlumnosAdmin = () => {
                     <h1 className="page-header">Alumnos</h1>
                     <div className="row my-3">
                         <div className="col-4">
-                            <Link to="/alumnos-crear" className="btn btn-green fs-bold me-3">Crear nuevo alumno</Link>
+                            <Link to="/alumnos-crear" className="btn btn-green fs-bold me-3">Crear nuevo Alumno</Link>
                         </div>
                         <div className="col-3">
                             <div className="input-group">
@@ -223,7 +221,6 @@ const AlumnosAdmin = () => {
             </div>
         </Fragment>
     );
-
 }
 
 export default AlumnosAdmin;

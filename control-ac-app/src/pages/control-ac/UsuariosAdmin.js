@@ -152,7 +152,7 @@ const UsuariosAdmin = () => {
                     <h1 className="page-header">Usuarios</h1>
                     <div className="row my-3">
                         <div className="col-4">
-                            <Link to="/usuarios-crear" className="btn btn-green fs-bold me-3">Crear nuevo usuario</Link>
+                            <Link to="/usuarios-crear" className="btn btn-green fs-bold me-3">Crear nuevo Usuario</Link>
                         </div>
                         <div className="col-3">
                             <div className="input-group">

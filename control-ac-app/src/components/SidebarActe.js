@@ -55,7 +55,7 @@ const SidebarActe = () => {
                             <div className="menu-item">
                                 <div className="menu-link">
                                     <div className="menu-icon"><i className="fa fa-sign-out-alt"></i></div>
-                                    <div className="menu-text" onClick={cerrarSesion} style={{ cursor: "pointer" }}> Salir</div>
+                                    <div className="menu-text" onClick={cerrarSesion} style={{ cursor: "pointer" }}>Cerrar sesión</div>
                                 </div>
                             </div>
                             <div className="menu-divider m-0"></div>

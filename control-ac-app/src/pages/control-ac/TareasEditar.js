@@ -102,7 +102,9 @@ const TareasEditar = () => {
         const response = await APIInvoke.invokePUT('/tareas', data);
 
         if (response.ok === true) {
-            navigate('/tareas');
+            setTimeout(() => {
+                navigate('/tareas');
+            }, 2000);           
             
             swal({
                 title: 'Información',
@@ -229,9 +231,9 @@ const TareasEditar = () => {
                                                     </div>
                                                     <div className="row">
                                                         <div className="col-md-12 mb-2 mb-md-0">
-                                                            <button type="submit" className="btn btn-outline-success" tabIndex="5" id="crear">Editar</button>
-                                                            <button type="reset" className="btn btn-outline-success" tabIndex="6" id="cancelar">Cancelar</button>
-                                                            <Link to="/tareas" className="btn btn-outline-success" tabIndex="7" id="cerrar">Cerrar</Link>
+                                                            <button type="submit" className="btn btn-success me-1" tabIndex="5" id="crear">Editar</button>
+                                                            <button type="reset" className="btn btn-success me-1" tabIndex="6" id="cancelar">Cancelar</button>
+                                                            <Link to="/tareas" className="btn btn-success me-1" tabIndex="7" id="cerrar">Cerrar</Link>
                                                         </div>
                                                     </div>
                                                 </form>

@@ -72,7 +72,20 @@ const AlumnosEditar = () => {
                     idCurso: response.body.idCurso.idCurso
                 })
             } else {
-
+                swal({
+                    title: 'Error',
+                    text: response.message,
+                    icon: 'error',
+                    buttons: {
+                        confirm: {
+                            text: 'Aceptar',
+                            value: true,
+                            visible: true,
+                            className: 'btn btn-danger',
+                            closeModal: true
+                        }
+                    }
+                })
             }
         }, 0)
     }
@@ -107,7 +120,6 @@ const AlumnosEditar = () => {
             });
     }
 
-
     const editarAlumno = async () => {
         const data = {
             idAlumno: idalumno,
@@ -129,8 +141,9 @@ const AlumnosEditar = () => {
         const response = await APIInvoke.invokePUT(`/alumnos`, data);
 
         if (response.ok === true) {
-            navigate(`/alumnos`);
-            
+            setTimeout(() => {
+                navigate(`/alumnos`);    
+            }, 2000);            
             swal({
                 title: 'Información',
                 text: response.message,
@@ -349,9 +362,9 @@ const AlumnosEditar = () => {
                                                     </div>                                              
                                                     <div className="row">
                                                         <div className="col-md-6 mb-2 mb-md-0">
-                                                            <button type="submit" className="btn btn-outline-success" id="guardar" tabindex="9">Guardar</button>
-                                                            <button type="reset" className="btn btn-outline-success" id="cancelar" tabindex="10">Cancelar</button>
-                                                            <Link to="/usuarios" className="btn btn-outline-success" id="cerrar" tabindex="11">Cerrar</Link>
+                                                            <button type="submit" className="btn btn-success me-1" id="guardar" tabindex="9">Guardar</button>
+                                                            <button type="reset" className="btn btn-success me-1" id="cancelar" tabindex="10">Cancelar</button>
+                                                            <Link to="/usuarios" className="btn btn-success me-1" id="cerrar" tabindex="11">Cerrar</Link>
                                                         </div>
                                                     </div>
                                                 </form>                                                

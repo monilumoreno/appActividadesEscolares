@@ -24,6 +24,9 @@ import TareasEditar from './pages/control-ac/TareasEditar';
 import TareasListaAcu from './pages/control-ac/TareasListaAcu';
 import AlumnosListar from './pages/control-ac/AlumnosListar';
 import AsignaturasCrear from './pages/control-ac/AsignaturasCrear';
+import AsignaturasEditar from './pages/control-ac/AsignaturasEditar';
+import CursosCrear from './pages/control-ac/CursosCrear';
+import CursosEditar from './pages/control-ac/CursosEditar';
 
 const App = () => {
     return (
@@ -35,7 +38,10 @@ const App = () => {
           <Route path = '/homedocente' exact element = {<HomeDocente />} />
           <Route path = '/asignaturas' exact element = {<AsignaturasAdmin />} />
           <Route path = '/asignaturas-crear' exact element = {<AsignaturasCrear />} />
+          <Route path = '/asignaturas-editar/:idasignatura' exact element = {<AsignaturasEditar />} />
           <Route path = '/cursos' exact element = {<CursosAdmin />} />
+          <Route path = '/cursos-crear' exact element = {<CursosCrear />} />
+          <Route path = '/cursos-editar/:idcurso' exact element = {<CursosEditar />} />
           <Route path = '/usuarios' exact element = {<UsuariosAdmin />} />
           <Route path = '/usuarios-crear' exact element = {<UsuariosCrear />} />
           <Route path = '/usuarios-editar/:idusuario' exact element = {<UsuariosEditar />} />

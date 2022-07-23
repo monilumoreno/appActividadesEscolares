@@ -15,7 +15,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	public Optional<Usuario> findByusuario(String nombreusuario);
 	
 	@Query("SELECT u FROM Usuario u WHERE u.usuario = :nombreusuario AND u.estado LIKE 'A'")
-	public Optional<List<Usuario>> findByusuarioActivo(@Param("nombreusuario") String nombreusuario);
+    public Optional<Usuario> findByNomUsuario(@Param("nombreusuario") String nombreusuario);
 	
 	@Query("SELECT u FROM Usuario u WHERE u.estado LIKE 'A'")
     public Optional<List<Usuario>> findActives();

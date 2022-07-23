@@ -177,13 +177,13 @@ public class UsuarioService {
 		}
 	}
 	
-	public LoginResponseDTO login(LoginRequestDTO request) {			
-		try {			
-			Usuario usuario = usuarioRepo.findByusuario(request.getNombreUsuario())
-					.orElseThrow(() -> new ValidateServiceException("Nombre de usuario o clave incorrecta"));
+	public LoginResponseDTO login(LoginRequestDTO request) {            
+        try {           
+            //Usuario usuario = usuarioRepo.findByusuario(request.getNombreUsuario())
+            Usuario usuario = usuarioRepo.findByNomUsuario(request.getNombreUsuario())
+                    .orElseThrow(() -> new ValidateServiceException("Nombre de usuario o clave incorrecta"));
 	
-			if (!usuario.getClave().equals(request.getClave()) 
-					&& usuario.getEstado().equals('I')) {
+			if (!usuario.getClave().equals(request.getClave())) {					
 				throw new ValidateServiceException("Nombre de usuario o clave incorrecta");
 			}
 	

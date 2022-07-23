@@ -93,6 +93,10 @@ const UsuariosCrear = () => {
                 }
             })
         }
+        reset();
+    }
+
+    const reset = () => {
         setUsuario({
             tipoDocumento: '2',
             numeroDocumento: '',
@@ -104,6 +108,7 @@ const UsuariosCrear = () => {
             nomUsuario: '',
             clave: ''
         })
+        document.getElementById('tipoDocumento').focus();
     }
 
     useEffect(() => {
@@ -267,7 +272,7 @@ const UsuariosCrear = () => {
                                                     <div className="row">
                                                         <div className="col-md-6 mb-2 mb-md-0">
                                                             <button type="submit" className="btn btn-success me-1" id="crear" tabindex="9">Crear</button>
-                                                            <button type="reset" className="btn btn-success me-1" id="cancelar" tabindex="10">Cancelar</button>
+                                                            <button onClick={reset} type="reset" className="btn btn-success me-1" id="cancelar" tabindex="10">Cancelar</button>
                                                             <Link to="/usuarios" className="btn btn-success me-1" id="cerrar" tabindex="11">Cerrar</Link>
                                                         </div>
                                                     </div>                                                    
